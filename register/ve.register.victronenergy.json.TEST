@@ -1,0 +1,8 @@
+{
+  "/Serial": {
+    "Register": 3902,
+    "Type": "",
+    "Length": "string[7]",
+    "Factor": ""
+  }
+}

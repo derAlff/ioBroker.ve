@@ -1,0 +1,49 @@
+{
+	"i18n": true,
+	"type": "panel",
+	"items": {
+		"victronIp": {
+			"type": "text",
+			"sm": 12,
+			"md": 6,
+			"lg": 6,
+			"label": "IP-Address",
+			"help": "IP-Address of VictronEnergy GX devcice"
+		},
+		"victronPort": {
+			"type": "number",
+			"min": 1,
+			"max": 65535,
+			"sm": 12,
+			"md": 6,
+			"lg": 6,
+			"label": "Port",
+			"help": "Network port of VictronEnergy GX devcice (at the moment only Modbus!)"
+		},
+		"fetchInterval": {
+			"type": "number",
+			"min": 5000,
+			"max": 3600000,
+			"sm": 12,
+			"md": 6,
+			"lg": 6,
+			"label": "Interval",
+			"help": "Interval to receive data from Victron Energy GX device (in Milliseconds!)"
+		},	
+		"useMqtt": {
+			"type": "checkbox",
+			"label": "Use MQTT",
+			"help": "Use MQTT as protocol instead of Modbus",
+			"newLine": true
+		},
+		"_buyMeACoffee": {
+			"newLine": true,
+			"type": "staticImage",
+			"sm": 12,
+			"md": 6,
+			"lg": 3,
+			"href": "https://www.buymeacoffee.com/deralffiot",
+			"src": "buymeacoffee.png"
+		}
+	}
+}

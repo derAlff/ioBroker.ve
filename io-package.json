@@ -1,0 +1,104 @@
+{
+    "common": {
+        "name": "ve",
+        "version": "0.0.1",
+        "news": {
+            "0.1.0": {
+                "en": "First running version, Added Registers, Added more registers",
+                "de": "Erste Ausführung, Hinzugefügt Register, Hinzugefügt mehr Register",
+                "ru": "Первая версия, Добавленные Регистры, Добавлены больше регистров",
+                "pt": "Primeira versão em execução, Registos adicionados, Adicionado mais registros",
+                "nl": "Eerste draaiende versie, Added Registers, voegde meer registers toe",
+                "fr": "Première version en cours, Ajout de registres, Ajout d'autres registres",
+                "it": "Prima versione in esecuzione, Aggiunto Registrati, Aggiunto più registri",
+                "es": "Primera versión en ejecución, Registros añadidos, Añadido más registros",
+                "pl": "Pierwsza wersja, Added Registers, zawiera więcej rejestrów",
+                "uk": "Перший запуск версії, Додано реєстри, Додано більше реєстрів",
+                "zh-cn": "第一版,《增编登记册》,增加登记册"
+            },
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "zh-cn": "首次出版",
+                "uk": "початковий випуск"
+            }
+        },
+        "title": "Victron Energy",
+        "titleLang": {
+            "en": "Victron Energy",
+            "de": "Victron Energie",
+            "ru": "Виктрон Энерджи",
+            "pt": "Victron Energy",
+            "nl": "Victron energie",
+            "fr": "Victron Énergie",
+            "it": "Victron Energy",
+            "es": "Energía victron",
+            "pl": "Energia Victrona",
+            "zh-cn": "伟创能源",
+            "uk": "Victron Energy"
+        },
+        "desc": {
+            "en": "ve",
+            "de": "ve",
+            "ru": "ве",
+            "pt": "eu",
+            "nl": "ve",
+            "fr": "je",
+            "it": "ve",
+            "es": "ve",
+            "pl": "ve",
+            "zh-cn": "已经",
+            "uk": "ve"
+        },
+        "authors": [
+            "derAlff <deralff@gmail.com>"
+        ],
+        "keywords": [
+            "ioBroker",
+            "template",
+            "Smart Home",
+            "home automation"
+        ],
+        "license": "CC BY-NC 4.0",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "ve.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/derAlff/ioBroker.ve/main/admin/ve.png",
+        "readme": "https://github.com/derAlff/ioBroker.ve/blob/main/README.md",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "iot-systems",
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "poll",
+        "adminUI": {
+            "config": "json"
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=3.3.22"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=5.1.13"
+            }
+        ]
+    },
+    "native": {
+        "victronIp": "",
+        "victronPort": 502,
+        "useMqtt": false,
+        "fetchInterval": 5000
+    },
+    "objects": [],
+    "instanceObjects": []
+}

@@ -1,0 +1,38 @@
+{
+	"cli": true,
+	"target": "directory",
+	"adapterName": "ve",
+	"title": "Victron Energy",
+	"expert": "no",
+	"features": [
+		"adapter"
+	],
+	"adminFeatures": [],
+	"type": "iot-systems",
+	"startMode": "daemon",
+	"connectionType": "local",
+	"dataSource": "poll",
+	"connectionIndicator": "no",
+	"language": "JavaScript",
+	"nodeVersion": "14",
+	"adminUi": "json",
+	"tools": [
+		"ESLint",
+		"type checking"
+	],
+	"releaseScript": "no",
+	"devServer": "yes",
+	"devServerPort": 8081,
+	"indentation": "Tab",
+	"quotes": "double",
+	"es6class": "yes",
+	"authorName": "derAlff",
+	"authorGithub": "derAlff",
+	"authorEmail": "deralff@gmail.com",
+	"gitRemoteProtocol": "HTTPS",
+	"gitCommit": "no",
+	"defaultBranch": "main",
+	"license": "GNU GPLv3",
+	"dependabot": "yes",
+	"creatorVersion": "2.3.0"
+}
