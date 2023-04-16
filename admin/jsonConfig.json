@@ -20,6 +20,16 @@
 			"label": "Port",
 			"help": "Network port of VictronEnergy GX devcice (at the moment only Modbus!)"
 		},
+		"numOfPvInverters":{
+			"type": "number",
+			"min": 1,
+			"max": 10,
+			"sm": 12,
+			"md": 6,
+			"lg": 6,
+			"label": "Count of PV-Inverters",
+			"help": "Number of connected PV-Inverters (i.e. 3 SMA STP-10000TL-10 via Modbus)"
+		},
 		"fetchInterval": {
 			"type": "number",
 			"min": 5000,

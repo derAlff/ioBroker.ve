@@ -3,5 +3,6 @@
     "IP-Address": "IP adres",
     "Port": "Haven",
     "Interval": "Interval",
-    "Use MQTT": "Gebruik MQTT"
+    "Use MQTT": "Gebruik MQTT",
+    "Count of PV-Inverters": "Count of PV-Inverters"
 }

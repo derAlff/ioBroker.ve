@@ -10,7 +10,7 @@
 
 **Tests:** ![Test and Release](https://github.com/derAlff/ioBroker.ve/workflows/Test%20and%20Release/badge.svg)
 
-## ve adapter für ioBroker
+## Victron-Energy adapter für ioBroker
 
 Mit diesem adapter kannst du dich über eine gwählte Netzwerktechnik (Modbus oder MQTT) zu deinem Victron Energy GX Gerät verbinden.
 
@@ -22,6 +22,9 @@ Bisher wurden folgende Geräte erfolgreich getestet:
 
 
 ## Changelog
+### 0.1.1
+* (derAlff) Changed inverter register to a seperate object to use multiple PV-Inverters
+* (derAlff) Added textbox in UI to set a count of PV-Inverters
 
 ### 0.1.0
 * (derAlff) First running version

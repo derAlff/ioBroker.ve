@@ -3,5 +3,6 @@
     "IP-Address": "IP-адреса",
     "Port": "Порт",
     "Interval": "Інтервал",
-    "Use MQTT": "Використовуйте MQTT"
+    "Use MQTT": "Використовуйте MQTT",
+    "Count of PV-Inverters": "Count of PV-Inverters"
 }

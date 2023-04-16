@@ -97,7 +97,8 @@
         "victronIp": "",
         "victronPort": 502,
         "useMqtt": false,
-        "fetchInterval": 5000
+        "fetchInterval": 5000,
+        "numOfPvInverters": 0
     },
     "objects": [],
     "instanceObjects": []

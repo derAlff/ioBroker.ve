@@ -3,5 +3,6 @@
     "IP-Address": "Indirizzo IP",
     "Port": "Porta",
     "Interval": "Intervallo",
-    "Use MQTT": "Usa MQTT"
+    "Use MQTT": "Usa MQTT",
+    "Count of PV-Inverters": "Count of PV-Inverters"
 }

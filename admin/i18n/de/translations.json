@@ -3,5 +3,6 @@
     "IP-Address": "IP Adresse",
     "Port": "Port",
     "Interval": "Intervall",
-    "Use MQTT": "MQTT verwenden"
+    "Use MQTT": "MQTT verwenden",
+    "Count of PV-Inverters": "Anzahl PV-Wechselrichter"
 }
