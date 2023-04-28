@@ -240,14 +240,14 @@ class Ve extends utils.Adapter {
 					} 
 				}
 				else{
-					this.log.debug(`It is the INVERTER :) -> Installes ${this.config.numOfPvInverters}`);
+					this.log.debug(`It is the INVERTER :) -> Installed ${this.config.numOfPvInverters}`);
 					
 					if(this.config.numOfPvInverters > 0)
 					{	
 						for(let i = 0; i < this.config.numOfPvInverters; i++)
 						{
 							this.log.debug(`Actual PV-Inverter: '${i.toString()}'`);
-							
+
 							Object.entries(register[1]["Registers"]).forEach(async invRegister  =>{
 								const oRegister = invRegister[1];
 								const sRegisterName = oRegister["RegisterName"].toString();
@@ -268,11 +268,13 @@ class Ve extends utils.Adapter {
 								this.log.debug(`Value for inverter '${i.toString()}' - sRegisterType: '${sRegisterType}'`);
 								this.log.debug("----------------------------------");
 
-								client.setID(nRegisterId + i); 
-								const data = await client.readHoldingRegisters(nRegisterNr, nRegisterLength);
-								
-								if(data !== undefined)
-								{
+								//client.setID(nRegisterId + i); 
+								//const data = await client.readHoldingRegisters(nRegisterNr, nRegisterLength);
+								const data = await this.getInverter(nRegisterId + i, nRegisterNr, nRegisterLength)
+
+								if(data !== undefined && data !== null)
+								{	
+									this.log.debug(`Received data for inverter no. '${(i+1).toString()}'`);
 									//this.log.debug("Data: " + data.data.toString());
 									const iobDatapoint = "Inverter." + nRegisterId.toString() + "." + sRegisterName;
 									let nV = data.data;
@@ -300,7 +302,11 @@ class Ve extends utils.Adapter {
 									await this.setStateAsync(iobDatapoint, { val: writeValue, ack: true });
 
 								}	
+								else{
+									this.log.warn(`Can not read '${sRegisterName}' data for inverter no. '${(i+1).toString()}'. Is this inverter available?`)
+								} 
 							} )
+							
 						}	
 					}	
 					
@@ -311,6 +317,15 @@ class Ve extends utils.Adapter {
 		}, 5000);
 	}
 
+	async getInverter(nRegisterId, nRegisterNr, nRegisterLength){
+		try{
+			client.setID(nRegisterId); 
+			const data = await client.readHoldingRegisters(nRegisterNr, nRegisterLength);
+			return data;
+		}catch(err){
+			return null;
+		} 
+	} 
 	/**
 	 * Is called when adapter shuts down - callback has to be called under any circumstances!
 	 * @param {() => void} callback

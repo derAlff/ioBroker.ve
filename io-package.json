@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ve",
-        "version": "0.2.0",
+        "version": "0.2.1",
         "news": {
+            "0.2.1": {
+                "en": "Added function with try...catch for receive inverter data",
+                "de": "Zusatzfunktion mit Try...Katch für den Empfang von Wechselrichterdaten",
+                "ru": "Добавлена функция с try...catch для получения инверторных данных",
+                "pt": "Função adicionada com try...catch para receber dados do inversor",
+                "nl": "Voeg de functie toe met een poging om inverter gegevens te ontvangen",
+                "fr": "Fonction ajoutée avec essayer...catch pour recevoir des données d'inverter",
+                "it": "Funzione aggiunta con provare...catch per ricevere dati inverter",
+                "es": "Función agregada con el intento... capturar para recibir datos del inversor",
+                "pl": "Funkcja dodawana do testu..catch za odwracanie danych",
+                "uk": "Додано функцію з try...catch для отримання інверторних даних",
+                "zh-cn": "增加工作功能。"
+              },
             "0.2.0": {
                 "en": "Process separate inverter object (multiple inverters) and write to data points. Updated \"Getestete Geräte\" in Readme. Inserted section \"configure\" in Readme. Updated io-package.json. ",
                 "de": "Bearbeiten Sie separate Wechselrichterobjekt (mehrfache Wechselrichter) und schreiben Sie an Datenpunkte. Aktualisierte \"Getestete Geräte\" in Readme. Einfügen Abschnitt Konfigurieren in Readme. Aktualisierte io-package.json.",

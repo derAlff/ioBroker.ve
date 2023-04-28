@@ -30,10 +30,13 @@ Bisher wurden folgende Geräte erfolgreich getestet:
 
 
 ## Changelog
+### 0.2.1
+* (derAlff) Added function with try...catch for receive inverter data
+
 ### 0.2.0
 * (derAlff) Process separate inverter object (multiple inverters) and write to data points
 * (derAlff) Updated "Getestete Geräte" in Readme
-* (derAlff) Inserted section "configure" in Readme.
+* (derAlff) Inserted section "configure" in Readme
 * (derAlff) Updated io-package.json
 
 ### 0.1.1
