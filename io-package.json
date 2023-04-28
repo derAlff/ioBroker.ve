@@ -1,8 +1,34 @@
 {
     "common": {
         "name": "ve",
-        "version": "0.0.1",
+        "version": "0.2.0",
         "news": {
+            "0.2.0": {
+                "en": "Process separate inverter object (multiple inverters) and write to data points. Updated \"Getestete Geräte\" in Readme. Inserted section \"configure\" in Readme. Updated io-package.json. ",
+                "de": "Bearbeiten Sie separate Wechselrichterobjekt (mehrfache Wechselrichter) und schreiben Sie an Datenpunkte. Aktualisierte \"Getestete Geräte\" in Readme. Einfügen Abschnitt Konfigurieren in Readme. Aktualisierte io-package.json.",
+                "ru": "Процесс отдельных инверторных объектов (много инверторов) и написать в пункты данных. Обновлено \"Getestete Geräte\" в Readme. Встроенная настройка раздела в Readme. Обновлен io-package.json.",
+                "pt": "Processe o objeto inversor separado (versores múltiplos) e escreva para os pontos de dados. Atualizado \"Getestete Geräte\" em Readme. Seção inserida configurada no Readme. Atualizado io-package.json.",
+                "nl": "Process apart inverter object (multiple inverters) en schrijf op data punten. Update \"Getestete Geräte\" in Readme. Geïnstrueerde sectie configuur in Readme. Upded io-package.",
+                "fr": "Procéder à un objet d'invertisseur séparé (invertisseurs multiples) et écrire aux points de données. Actualisé \"Getestete Geräte\" à Readme. Configuration de section insérée dans Readme. Actualisé io-package.json.",
+                "it": "Elaborare oggetto inverter separato (multiple inverter) e scrivere ai punti di dati. Aggiornato \"Getestete Geräte\" in Readme. Sezione inserita configurata in Readme. Aggiornato io-package.json.",
+                "es": "Procesar un objeto inversor separado (invertores múltiples) y escribir a los puntos de datos. Actualizado \"Getestete Geräte\" en Readme. Configuración de sección insertada en Readme. Actualizado io-package.json.",
+                "pl": "Proces odwrócenia odwrócenia (współczynnik wielokrotnych) i zapisywany na punkty danych. \"Getestete Geräte\" w Readme. Wykorzystywana sekcja jest w Readme. Wyd. io-package.json.",
+                "uk": "Процес окремий інверторний об'єкт (багаторазові інвертори) і напишіть на точки даних. Оновлено \"Getestete Geräte\" в Readme. Вмонтований розділ, налаштовується в Readme. Оновлено io-package.json.",
+                "zh-cn": "处理不同的物体(纵火器)并填写数据点。 阅读摘要中更新的“Getestete Geräte”。 编页图。 最新包装."
+              },
+            "0.1.1": {
+                "en": "Changed inverter register to a seperate object to use multiple PV-Inverters. Added textbox in UI to set a count of PV-Inverters.",
+                "de": "Wechseln Sie das Wechselrichterregister in ein seperate Objekt, um mehrere PV-Inverter zu verwenden. Textfeld in UI hinzugefügt, um eine Anzahl von PV-Invertern einzustellen.",
+                "ru": "Изменена инверторная регистрация на сеператый объект для использования нескольких PV-инверторов. Добавлен текстовый ящик в UI для установки количества PV-инверторов.",
+                "pt": "Registro do inversor alterado para um objeto seperado para usar vários PV-Inverters. Adicionado caixa de texto em UI para definir uma contagem de PV-Inverters.",
+                "nl": "Veranderde inverter register naar een seperaat object om meerdere PV-Inverters te gebruiken. Gevoegd in UI om een aantal PV-Inverters te tellen.",
+                "fr": "Changed inverter register to a seperate object to use multiple PV-Inverters. Ajout de la boîte de texte dans l'interface utilisateur pour définir un nombre de PV-Inverters.",
+                "it": "Cambiato registro inverter a un oggetto seperato per utilizzare più PV-Inverter. Aggiunta casella di testo in UI per impostare un conteggio di PV-Inverters.",
+                "es": "Cambia el registro de inversor a un objeto seperado para utilizar múltiples PV-Inverters. Se agregó un buzón de texto en UI para establecer un recuento de inversores PV.",
+                "pl": "Zmienił rejestratora na szeroki obiekt, aby użyć wielu zmiennych PV-Inverters. Added textbox in UI to set the count of PV-Inverters.",
+                "uk": "Змінений інверторний реєстр для seperate об'єкта для використання декількох PV-інверторів. Додано текстову скриньку в UI для встановлення кількості PV-Інверторів.",
+                "zh-cn": "不同地点的登记册有变化,目的在于使用多种电网。 在UI中增加案文箱,以建立光纤器。."
+            },
             "0.1.0": {
                 "en": "First running version, Added Registers, Added more registers",
                 "de": "Erste Ausführung, Hinzugefügt Register, Hinzugefügt mehr Register",

@@ -14,6 +14,13 @@
 
 Mit diesem adapter kannst du dich über eine gwählte Netzwerktechnik (Modbus oder MQTT) zu deinem Victron Energy GX Gerät verbinden.
 
+## Einrichtung
+<img src="lib/img/00_configuration.png" alt="Buy Me A Coffee" /><br>
+1. IP-Adresse - Hier wird die IP-Adresse deines GX-Gerätes angegeben. Diese solltest du fest vergeben.
+2. Port - Hier wird der Modbus-Port angegeben. Diesen Port kannst du im GX-Gerät setzen bzw. ablesen. Modbus <b>MUSS</b> zur Zeit im GX-Gerät aktiviert sein!
+3. Anzahl PV-Wechselrichter - Hier wird die Anzahl der Wechselrichter angegeben, welche mit dem GX-Gerät verbunden sind (Sunspec-Modbus, usw...).
+4. Intervall - Mit der Angabe des Intervalls kannst du steuern, in welchem Takt die Daten bei deinem GX-Gerät abgeholt werden sollen. Die Angabe erfolgt in <b>ms - Millisekunden </b>.
+
 ## Getestete Geräte
 Bisher wurden folgende Geräte erfolgreich getestet:
 1. Victron Energy MultiPlus II GX 3000/35
@@ -26,6 +33,8 @@ Bisher wurden folgende Geräte erfolgreich getestet:
 ### 0.2.0
 * (derAlff) Process separate inverter object (multiple inverters) and write to data points
 * (derAlff) Updated "Getestete Geräte" in Readme
+* (derAlff) Inserted section "configure" in Readme.
+* (derAlff) Updated io-package.json
 
 ### 0.1.1
 * (derAlff) Changed inverter register to a seperate object to use multiple PV-Inverters
