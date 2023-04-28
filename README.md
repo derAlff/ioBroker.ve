@@ -17,11 +17,16 @@ Mit diesem adapter kannst du dich über eine gwählte Netzwerktechnik (Modbus od
 ## Getestete Geräte
 Bisher wurden folgende Geräte erfolgreich getestet:
 1. Victron Energy MultiPlus II GX 3000/35
+2. Cerbo GX - Large Firmware (tested by "kopierschnitte")
 
 <a href="https://www.buymeacoffee.com/deralffiot" ><img src="admin/buymeacoffee.png" alt="Buy Me A Coffee" /></a> 
 
 
 ## Changelog
+### 0.2.0
+* (derAlff) Process separate inverter object (multiple inverters) and write to data points
+* (derAlff) Updated "Getestete Geräte" in Readme
+
 ### 0.1.1
 * (derAlff) Changed inverter register to a seperate object to use multiple PV-Inverters
 * (derAlff) Added textbox in UI to set a count of PV-Inverters

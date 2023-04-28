@@ -208,7 +208,6 @@ function getRegisters() {
         Type: "uint16",
     },
     Inverter:{
-      StartId: 20,
       Registers: {
         InverterL1Power: {
           RegisterName: "InverterL1Power",

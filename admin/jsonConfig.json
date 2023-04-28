@@ -22,7 +22,7 @@
 		},
 		"numOfPvInverters":{
 			"type": "number",
-			"min": 1,
+			"min": 0,
 			"max": 10,
 			"sm": 12,
 			"md": 6,
