@@ -134,8 +134,6 @@ class Ve extends utils.Adapter {
 		// Check IP-Address
 		if(!checkIfValidIP(this.config.victronIp)){
 			this.log.error(`Your IP-Address '${this.config.victronIp}' is not valid. Restart the Adapter.`);
-			this.log.error(`Your IP-Address '${this.config.victronIp}' is not valid. Restart the Adapter.`);
-			this.log.error(`Your IP-Address '${this.config.victronIp}' is not valid. Restart the Adapter.`);
 
 			this.getAdapterObjects(data => {
 				this.log.warn(data.toString());
