@@ -30,6 +30,9 @@ Bisher wurden folgende Geräte erfolgreich getestet:
 
 
 ## Changelog
+### 0.2.2
+* (derAlff) Fixed 'check and lint' and integration test. Changed version in package.json and io-package.json
+
 ### 0.2.1
 * (derAlff) Added function with try...catch for receive inverter data
 
