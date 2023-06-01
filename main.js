@@ -131,178 +131,186 @@ class Ve extends utils.Adapter {
 		this.log.info("config port: " + this.config.victronPort);
 		this.log.info("Number of PV-Inverters: " + this.config.numOfPvInverters);
 
-		// Check IP-Address
-		if(!checkIfValidIP(this.config.victronIp)){
-			this.log.error(`Your IP-Address '${this.config.victronIp}' is not valid. Restart the Adapter.`);
+		if(this.config.victronIp !== "")
+		{
+			// Check IP-Address
+			if(!checkIfValidIP(this.config.victronIp)){
+				this.log.error(`Your IP-Address '${this.config.victronIp}' is not valid. Restart the Adapter.`);
 
-			this.getAdapterObjects(data => {
-				this.log.warn(data.toString());
-			});
-		}
+				this.getAdapterObjects(data => {
+					this.log.warn(data.toString());
+				});
+			}
 
-		// Connect to VE-Device
-		client.connectTCP(this.config.victronIp, { port: this.config.victronPort });
+			// Connect to VE-Device
+			client.connectTCP(this.config.victronIp, { port: this.config.victronPort }).catch(() => {this.log.debug("brb");});
 
-		interval = this.setInterval(() =>{
-			this.log.debug("Started interval...");
+			interval = this.setInterval(() =>{
+				this.log.debug("Started interval...");
 
 
-			Object.entries(ve).forEach(async register => {
-				if(!register.includes("Inverter"))
-				{
-					const deviceCount = 1;
-					const sRegisterName = register.toString().split(",")[0];
-					const nRegisterNumber = register[1].Register;
-					const nRegisterLength = register[1].Length;
-					const nRegisterId = register[1].Id;
-					const sRegisterUnit = register[1].Unit;
-					const nRegisterFactor = register[1].Factor;
-					const sRegisterType = register[1].Type;
-					let writeValue = null;
-
-					for(let i = 0; i < deviceCount; i++){
-						this.log.debug(`Read ID: '${nRegisterId + i}'`); // DEBUG
-						client.setID(nRegisterId + i);
-						const data = await client.readHoldingRegisters(nRegisterNumber, nRegisterLength);
-						if(data !== undefined && data != null){
-							if(data !== undefined)
-							{
-								let out = "";
-								const nV = data.data;
-								const nValue = convertRegister(sRegisterType, nV);
-
-								if(nRegisterFactor > 0)
-								{
-									out = (nValue * nRegisterFactor).toFixed(2).toString();
-								}
-								else{
-									out = nValue.toString();
-								}
-
-								if(sRegisterName == "ActiveInputSource")
-								{
-									out = activeInputSource[out.toString()];
-								}
-								if(sRegisterName.toLowerCase().includes("battery") && sRegisterName.toLowerCase().includes("lasterror")){
-									out = batteryErrors[out.toString()];
-								}
-
-								this.log.debug(sRegisterName + ": " + out + " " + sRegisterUnit); // DEBUG
-								/*
-									HERE SET OBJECTS
-								*/
-								if(sRegisterType.includes("uint") && !sRegisterName.toLowerCase().includes("activeinputsource"))
-								{
-									await this.setObjectNotExistsAsync(sRegisterName, {
-										type: "state",
-										common: {
-											name: sRegisterName,
-											type: "number",
-											role: "indicator",
-											unit: sRegisterUnit,
-											read: true,
-											write: true,
-										},
-										native: {},
-									});
-
-									writeValue = Number(out);
-								}
-								else{
-									await this.setObjectNotExistsAsync(sRegisterName, {
-										type: "state",
-										common: {
-											name: sRegisterName,
-											type: "string",
-											role: "indicator",
-											unit: sRegisterUnit,
-											read: true,
-											write: true,
-										},
-										native: {},
-									});
-
-									writeValue = out;
-								}
-
-								await this.setStateAsync(sRegisterName, { val: writeValue, ack: true });
-							}
-							else{
-								this.log.debug(`ID: '${nRegisterId + i}' is undefined`); // DEBUG
-							}
-						}
-					}
-				}
-				else{
-					this.log.debug(`It is the INVERTER :) -> Installed ${this.config.numOfPvInverters}`);
-					if(this.config.numOfPvInverters > 0)
+				Object.entries(ve).forEach(async register => {
+					if(!register.includes("Inverter"))
 					{
-						for(let i = 0; i < this.config.numOfPvInverters; i++)
-						{
-							this.log.debug(`Actual PV-Inverter: '${i.toString()}'`);
+						const deviceCount = 1;
+						const sRegisterName = register.toString().split(",")[0];
+						const nRegisterNumber = register[1].Register;
+						const nRegisterLength = register[1].Length;
+						const nRegisterId = register[1].Id;
+						const sRegisterUnit = register[1].Unit;
+						const nRegisterFactor = register[1].Factor;
+						const sRegisterType = register[1].Type;
+						let writeValue = null;
 
-							Object.entries(register[1]["Registers"]).forEach(async invRegister  =>{
-								const oRegister = invRegister[1];
-								const sRegisterName = oRegister["RegisterName"].toString();
-								const nRegisterNr = Number(oRegister["Register"]);
-								const nRegisterId = Number(oRegister["Id"]);
-								const nRegisterLength = Number(oRegister["Length"]);
-								const sRegisterUnit = oRegister["Unit"].toString();
-								const nRegisterFactor = Number(oRegister["Factor"]);
-								const sRegisterType = oRegister["Type"].toString();
-
-								this.log.debug("----------------------------------");
-								this.log.debug(`Value for inverter '${i.toString()}' - RegisterName: '${sRegisterName}'`);
-								this.log.debug(`Value for inverter '${i.toString()}' - nRegisterNr: '${nRegisterNr.toString()}'`);
-								this.log.debug(`Value for inverter '${i.toString()}' - nRegisterId: '${nRegisterId.toString()}'`);
-								this.log.debug(`Value for inverter '${i.toString()}' - nRegisterLength: '${nRegisterLength.toString()}'`);
-								this.log.debug(`Value for inverter '${i.toString()}' - sRegisterUnit: '${sRegisterUnit}'`);
-								this.log.debug(`Value for inverter '${i.toString()}' - nRegisterFactor: '${nRegisterFactor.toString()}'`);
-								this.log.debug(`Value for inverter '${i.toString()}' - sRegisterType: '${sRegisterType}'`);
-								this.log.debug("----------------------------------");
-
-								//client.setID(nRegisterId + i);
-								//const data = await client.readHoldingRegisters(nRegisterNr, nRegisterLength);
-								const data = await this.getInverter(nRegisterId + i, nRegisterNr, nRegisterLength);
-
-								if(data !== undefined && data !== null)
+						for(let i = 0; i < deviceCount; i++){
+							this.log.debug(`Read ID: '${nRegisterId + i}'`); // DEBUG
+							client.setID(nRegisterId + i);
+							const data = await client.readHoldingRegisters(nRegisterNumber, nRegisterLength);
+							if(data !== undefined && data != null){
+								if(data !== undefined)
 								{
-									this.log.debug(`Received data for inverter no. '${(i+1).toString()}'`);
-									//this.log.debug("Data: " + data.data.toString());
-									const iobDatapoint = "Inverter." + nRegisterId.toString() + "." + sRegisterName;
+									let out = "";
 									const nV = data.data;
-									const nValue = (convertRegister(sRegisterType, nV) * nRegisterFactor).toFixed(2);
-									const out = Number(nValue);
+									const nValue = convertRegister(sRegisterType, nV);
 
-									this.log.debug(`Value for '${sRegisterName}': ${nValue.toString()} ${sRegisterUnit}`);
+									if(nRegisterFactor > 0)
+									{
+										out = (nValue * nRegisterFactor).toFixed(2).toString();
+									}
+									else{
+										out = nValue.toString();
+									}
 
-									await this.setObjectNotExistsAsync(iobDatapoint, {
-										type: "state",
-										common: {
-											name: sRegisterName,
-											type: "number",
-											role: "indicator",
-											unit: sRegisterUnit,
-											read: true,
-											write: true,
-										},
-										native: {},
-									});
+									if(sRegisterName == "ActiveInputSource")
+									{
+										out = activeInputSource[out.toString()];
+									}
+									if(sRegisterName.toLowerCase().includes("battery") && sRegisterName.toLowerCase().includes("lasterror")){
+										out = batteryErrors[out.toString()];
+									}
 
-									const writeValue = out;
+									this.log.debug(sRegisterName + ": " + out + " " + sRegisterUnit); // DEBUG
+									/*
+										HERE SET OBJECTS
+									*/
+									if(sRegisterType.includes("uint") && !sRegisterName.toLowerCase().includes("activeinputsource"))
+									{
+										await this.setObjectNotExistsAsync(sRegisterName, {
+											type: "state",
+											common: {
+												name: sRegisterName,
+												type: "number",
+												role: "indicator",
+												unit: sRegisterUnit,
+												read: true,
+												write: true,
+											},
+											native: {},
+										});
 
-									await this.setStateAsync(iobDatapoint, { val: writeValue, ack: true });
+										writeValue = Number(out);
+									}
+									else{
+										await this.setObjectNotExistsAsync(sRegisterName, {
+											type: "state",
+											common: {
+												name: sRegisterName,
+												type: "string",
+												role: "indicator",
+												unit: sRegisterUnit,
+												read: true,
+												write: true,
+											},
+											native: {},
+										});
 
+										writeValue = out;
+									}
+
+									await this.setStateAsync(sRegisterName, { val: writeValue, ack: true });
 								}
 								else{
-									this.log.warn(`Can not read '${sRegisterName}' data for inverter no. '${(i+1).toString()}'. Is this inverter available?`);
+									this.log.debug(`ID: '${nRegisterId + i}' is undefined`); // DEBUG
 								}
-							});
+							}
 						}
 					}
-				}
-			});
-		}, 5000);
+					else{
+						this.log.debug(`It is the INVERTER :) -> Installed ${this.config.numOfPvInverters}`);
+						if(this.config.numOfPvInverters > 0)
+						{
+							for(let i = 0; i < this.config.numOfPvInverters; i++)
+							{
+								this.log.debug(`Actual PV-Inverter: '${i.toString()}'`);
+
+								Object.entries(register[1]["Registers"]).forEach(async invRegister  =>{
+									const oRegister = invRegister[1];
+									const sRegisterName = oRegister["RegisterName"].toString();
+									const nRegisterNr = Number(oRegister["Register"]);
+									const nRegisterId = Number(oRegister["Id"]);
+									const nRegisterLength = Number(oRegister["Length"]);
+									const sRegisterUnit = oRegister["Unit"].toString();
+									const nRegisterFactor = Number(oRegister["Factor"]);
+									const sRegisterType = oRegister["Type"].toString();
+
+									this.log.debug("----------------------------------");
+									this.log.debug(`Value for inverter '${i.toString()}' - RegisterName: '${sRegisterName}'`);
+									this.log.debug(`Value for inverter '${i.toString()}' - nRegisterNr: '${nRegisterNr.toString()}'`);
+									this.log.debug(`Value for inverter '${i.toString()}' - nRegisterId: '${nRegisterId.toString()}'`);
+									this.log.debug(`Value for inverter '${i.toString()}' - nRegisterLength: '${nRegisterLength.toString()}'`);
+									this.log.debug(`Value for inverter '${i.toString()}' - sRegisterUnit: '${sRegisterUnit}'`);
+									this.log.debug(`Value for inverter '${i.toString()}' - nRegisterFactor: '${nRegisterFactor.toString()}'`);
+									this.log.debug(`Value for inverter '${i.toString()}' - sRegisterType: '${sRegisterType}'`);
+									this.log.debug("----------------------------------");
+
+									//client.setID(nRegisterId + i);
+									//const data = await client.readHoldingRegisters(nRegisterNr, nRegisterLength);
+									const data = await this.getInverter(nRegisterId + i, nRegisterNr, nRegisterLength);
+
+									if(data !== undefined && data !== null)
+									{
+										this.log.debug(`Received data for inverter no. '${(i+1).toString()}'`);
+										//this.log.debug("Data: " + data.data.toString());
+										const iobDatapoint = "Inverter." + nRegisterId.toString() + "." + sRegisterName;
+										const nV = data.data;
+										const nValue = (convertRegister(sRegisterType, nV) * nRegisterFactor).toFixed(2);
+										const out = Number(nValue);
+
+										this.log.debug(`Value for '${sRegisterName}': ${nValue.toString()} ${sRegisterUnit}`);
+
+										await this.setObjectNotExistsAsync(iobDatapoint, {
+											type: "state",
+											common: {
+												name: sRegisterName,
+												type: "number",
+												role: "indicator",
+												unit: sRegisterUnit,
+												read: true,
+												write: true,
+											},
+											native: {},
+										});
+
+										const writeValue = out;
+
+										await this.setStateAsync(iobDatapoint, { val: writeValue, ack: true });
+
+									}
+									else{
+										this.log.warn(`Can not read '${sRegisterName}' data for inverter no. '${(i+1).toString()}'. Is this inverter available?`);
+									}
+								});
+							}
+						}
+					}
+				});
+			}, 5000);
+		}
+		else{
+			interval = setInterval(() => {
+				this.log.debug("The IP address is not set. Adapter is not running!");
+			}, 5000);
+		}
 	}
 
 	async getInverter(nRegisterId, nRegisterNr, nRegisterLength){
