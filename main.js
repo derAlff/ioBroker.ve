@@ -7,10 +7,10 @@
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
 const ModbusRTU = require("modbus-serial").default;
-const fs = require('fs');
+// const fs = require('fs');
 const client = new ModbusRTU();
 
-const registers = require('./register/ve.register.victronenergy');
+const registers = require("./register/ve.register.victronenergy");
 
 const ve = registers.getRegisters();
 
@@ -25,42 +25,42 @@ const activeInputSource ={
 	240: "Not connected"
 };
 const batteryErrors = {
-    0:"No error",
-    1:"Battery initialization error",
-    2:"No batteries connected",
-    3:"Unknown battery connected",
-    4:"Different battery type",
-    5:"Number of batteries incorrect",
-    6:"Lynx Shunt not found",
-    7:"Battery measure error",
-    8:"Internal calculation error",
-    9:"Batteries in series not ok",
-    10:"Number of batteries incorrect",
-    11:"Hardware error",
-    12:"Watchdog error",
-    13:"Over voltage",
-    14:"Under voltage",
-    15:"Over temperature",
-    16:"Under temperature",
-    17:"Hardware fault",
-    18:"Standby shutdown",
-    19:"Pre-charge charge error",
-    20:"Safety contactor check error",
-    21:"Pre-charge discharge error",
-    22:"ADC error",
-    23:"Slave error",
-    24:"Slave warning",
-    25:"Pre-charge error",
-    26:"Safety contactor error",
-    27:"Over current",
-    28:"Slave update failed",
-    29:"Slave update unavailable",
-    30:"Calibration data lost",
-    31:"Settings invalid",
-    32:"BMS cable",
-    33:"Reference failure",
-    34:"Wrong system voltage",
-    35:"Pre-charge timeout"
+0:"No error",
+1:"Battery initialization error",
+2:"No batteries connected",
+3:"Unknown battery connected",
+4:"Different battery type",
+5:"Number of batteries incorrect",
+6:"Lynx Shunt not found",
+7:"Battery measure error",
+8:"Internal calculation error",
+9:"Batteries in series not ok",
+10:"Number of batteries incorrect",
+11:"Hardware error",
+12:"Watchdog error",
+13:"Over voltage",
+14:"Under voltage",
+15:"Over temperature",
+16:"Under temperature",
+17:"Hardware fault",
+18:"Standby shutdown",
+19:"Pre-charge charge error",
+20:"Safety contactor check error",
+21:"Pre-charge discharge error",
+22:"ADC error",
+23:"Slave error",
+24:"Slave warning",
+25:"Pre-charge error",
+26:"Safety contactor error",
+27:"Over current",
+28:"Slave update failed",
+29:"Slave update unavailable",
+30:"Calibration data lost",
+31:"Settings invalid",
+32:"BMS cable",
+33:"Reference failure",
+34:"Wrong system voltage",
+35:"Pre-charge timeout"
 };
 
 // Load your modules here, e.g.:
