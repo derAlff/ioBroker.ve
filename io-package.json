@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ve",
-        "version": "0.2.1",
+        "version": "0.2.2",
         "news": {
+			"0.2.2": {
+                "en": "Fixed 'check and lint' and integration test. Changed version in package.json and io-package.json\n",
+				"de": "Behobener 'Check- und Lint'- und Integrationstest. Geänderte Version im Paket. json und io-package. Json\n",
+				"ru": "Исправлена проверка и lint' и проверка интеграции. Изменена версия в пакете. json и io-package. Джсон\n",
+				"pt": "Corrigido 'check e lint' e teste de integração. Versão alterada no pacote. json e io-package. O que foi\n",
+				"nl": "Gerepareerd 'check and lint' en integratietest. Veranderde versie in pakket. Json en io-package. Json\n",
+				"fr": "Correction 'check and lint' et le test d'intégration. Version modifiée dans le paquet. Json et io-package. json\n",
+				"it": "Risolto \"check and lint\" e test di integrazione. Versione modificata nel pacchetto. json e io-package. J\n",
+				"es": "Prueba de integración y control fijo. Versión modificada en paquete. json y io-package. json\n",
+				"pl": "Fixed 'check and lint' and integration test. Wersja zmienna w pakiecie. json i io-package. json\n",
+				"uk": "Виправлено 'check and lint' і тестування інтеграції. Змінена версія в пакеті. json і io-package. свінгери\n",
+				"zh-cn": "固定的检查和标记以及一体化试验。 一揽子计划的修改版本。 json和碘。 json\n"
+              },
             "0.2.1": {
                 "en": "Added function with try...catch for receive inverter data",
                 "de": "Zusatzfunktion mit Try...Katch für den Empfang von Wechselrichterdaten",
