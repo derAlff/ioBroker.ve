@@ -1,4 +1,3 @@
-
 function getRegisters() {
     return {
     ActiveInputSource: {
@@ -64,7 +63,6 @@ function getRegisters() {
       Factor: 1,
       Type: "int16",
     },
-    
     BatteryVoltage: {
       RegisterName: "BatteryVoltage",
       Register: 259,
@@ -155,7 +153,7 @@ function getRegisters() {
         Factor: 0.01,
         Type: "uint16",
     }
-    // shutdowns due to error 
+    // shutdowns due to error
     ,
     BatteryShutdownsDueToError: {
         RegisterName: "BatteryShutdownsDueToError",
@@ -268,4 +266,4 @@ function getRegisters() {
   };
 }
 
-module.exports = { getRegisters }; 
+module.exports = { getRegisters };
