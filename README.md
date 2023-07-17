@@ -30,6 +30,15 @@ Bisher wurden folgende Geräte erfolgreich getestet:
 
 
 ## Changelog
+
+### 0.3.0
+* (derAlff) Added writable variable in victron registers
+* (derAlff) Added register 1052/TotalPower in victron registers
+* (derAlff) Added more Grid registers (Voltage, Current, Energy fom net, Energy to net)
+* (derAlff) Added writable variable to createStateAsync() functions in main.js
+* (derAlff) Fixed wrong registers for 'Battery Error'
+* (derAlff) Added checks to create folders in 'Objects' for 'Battery', 'BatteryError', 'AC' and 'Grid'
+
 ### 0.2.2
 * (derAlff) Fixed 'check and lint' and integration test. Changed version in package.json and io-package.json
 

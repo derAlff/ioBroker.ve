@@ -150,21 +150,24 @@ class Ve extends utils.Adapter {
 
 
 				Object.entries(ve).forEach(async register => {
+					// Non-inverter values
 					if(!register.includes("Inverter"))
 					{
 						const deviceCount = 1;
-						const sRegisterName = register.toString().split(",")[0];
+						let sRegisterName = register.toString().split(",")[0];
 						const nRegisterNumber = register[1].Register;
 						const nRegisterLength = register[1].Length;
 						const nRegisterId = register[1].Id;
 						const sRegisterUnit = register[1].Unit;
 						const nRegisterFactor = register[1].Factor;
 						const sRegisterType = register[1].Type;
+						const bRegisterWritable = register[1].writable;
 						let writeValue = null;
 
 						for(let i = 0; i < deviceCount; i++){
 							this.log.debug(`Read ID: '${nRegisterId + i}'`); // DEBUG
 							client.setID(nRegisterId + i);
+							this.log.debug(`Read register: '${nRegisterNumber}'`); // DEBUG
 							const data = await client.readHoldingRegisters(nRegisterNumber, nRegisterLength);
 							if(data !== undefined && data != null){
 								if(data !== undefined)
@@ -186,7 +189,26 @@ class Ve extends utils.Adapter {
 										out = activeInputSource[out.toString()];
 									}
 									if(sRegisterName.toLowerCase().includes("battery") && sRegisterName.toLowerCase().includes("lasterror")){
+										// Create folder for Errors in ve.0.Battery.Error
+										sRegisterName = "Battery.Error." + sRegisterName;
 										out = batteryErrors[out.toString()];
+									}
+
+									// Create folders
+									// Battery
+									if(sRegisterName.toLowerCase().includes("battery") && !sRegisterName.toLowerCase().includes("lasterror"))
+									{
+										sRegisterName = "Battery." + sRegisterName;
+									}
+									// AC
+									if(sRegisterName.toLowerCase().includes("ac"))
+									{
+										sRegisterName = "AC." + sRegisterName;
+									}
+									// Grid
+									if(sRegisterName.toLowerCase().includes("grid"))
+									{
+										sRegisterName = "Grid." + sRegisterName;
 									}
 
 									this.log.debug(sRegisterName + ": " + out + " " + sRegisterUnit); // DEBUG
@@ -203,7 +225,7 @@ class Ve extends utils.Adapter {
 												role: "indicator",
 												unit: sRegisterUnit,
 												read: true,
-												write: true,
+												write: bRegisterWritable,
 											},
 											native: {},
 										});
@@ -219,7 +241,7 @@ class Ve extends utils.Adapter {
 												role: "indicator",
 												unit: sRegisterUnit,
 												read: true,
-												write: true,
+												write: bRegisterWritable,
 											},
 											native: {},
 										});
@@ -252,6 +274,7 @@ class Ve extends utils.Adapter {
 									const sRegisterUnit = oRegister["Unit"].toString();
 									const nRegisterFactor = Number(oRegister["Factor"]);
 									const sRegisterType = oRegister["Type"].toString();
+									const bRegisterWritable = oRegister["writable"];
 
 									this.log.debug("----------------------------------");
 									this.log.debug(`Value for inverter '${i.toString()}' - RegisterName: '${sRegisterName}'`);
@@ -286,7 +309,7 @@ class Ve extends utils.Adapter {
 												role: "indicator",
 												unit: sRegisterUnit,
 												read: true,
-												write: true,
+												write: bRegisterWritable,
 											},
 											native: {},
 										});
