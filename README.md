@@ -30,6 +30,10 @@ Bisher wurden folgende Geräte erfolgreich getestet:
 
 
 ## Changelog
+### 0.3.1
+* (derAlff) Fixed testing errors
+* (derAlff) Translated Admin UI
+* (derAlff) Updated README.
 
 ### 0.3.0
 * (derAlff) Added writable variable in victron registers
