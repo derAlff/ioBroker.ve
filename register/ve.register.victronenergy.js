@@ -1,86 +1,86 @@
 function getRegisters() {
-    return {
-    ActiveInputSource: {
-      RegisterName: "ActiveInputSource",
-      Register: 826,
-      Id: 100,
-      Length: 1,
-      Unit: "",
-      Factor: 0,
-      Type: "uint16",
-	  writable: false
+	return {
+	ActiveInputSource: {
+		RegisterName: "ActiveInputSource",
+		Register: 826,
+		Id: 100,
+		Length: 1,
+		Unit: "",
+		Factor: 0,
+		Type: "uint16",
+		writable: false
     },
     AcConsumptionL1Power: {
-      RegisterName: "AcConsumptionL1Power",
-      Register: 817,
-      Id: 100,
-      Length: 1,
-      Unit: "W",
-      Factor: 1,
-      Type: "uint16",
-	  writable: false
+		RegisterName: "AcConsumptionL1Power",
+		Register: 817,
+		Id: 100,
+		Length: 1,
+		Unit: "W",
+		Factor: 1,
+		Type: "uint16",
+		writable: false
     },
     AcConsumptionL2Power: {
-      RegisterName: "AcConsumptionL2Power",
-      Register: 818,
-      Id: 100,
-      Length: 1,
-      Unit: "W",
-      Factor: 1,
-      Type: "uint16",
-	  writable: false
+		RegisterName: "AcConsumptionL2Power",
+		Register: 818,
+		Id: 100,
+		Length: 1,
+		Unit: "W",
+		Factor: 1,
+		Type: "uint16",
+		writable: false
     },
     AcConsumptionL3Power: {
-      RegisterName: "AcConsumptionL3Power",
-      Register: 819,
-      Id: 100,
-      Length: 1,
-      Unit: "W",
-      Factor: 1,
-      Type: "uint16",
-	  writable: false
+		RegisterName: "AcConsumptionL3Power",
+		Register: 819,
+		Id: 100,
+		Length: 1,
+		Unit: "W",
+		Factor: 1,
+		Type: "uint16",
+		writable: false
     },
     GridL1Power: {
-      RegisterName: "GridL1Power",
-      Register: 820,
-      Id: 100,
-      Length: 1,
-      Unit: "W",
-      Factor: 1,
-      Type: "int16",
-	  writable: false
+		RegisterName: "GridL1Power",
+		Register: 820,
+		Id: 100,
+		Length: 1,
+		Unit: "W",
+		Factor: 1,
+		Type: "int16",
+		writable: false
     },
     GridL2Power: {
-      RegisterName: "GridL2Power",
-      Register: 821,
-      Id: 100,
-      Length: 1,
-      Unit: "W",
-      Factor: 1,
-      Type: "int16",
-	  writable: false
+		RegisterName: "GridL2Power",
+		Register: 821,
+		Id: 100,
+		Length: 1,
+		Unit: "W",
+		Factor: 1,
+		Type: "int16",
+		writable: false
     },
     GridL3Power: {
-      RegisterName: "GridL3Power",
-      Register: 822,
-      Id: 100,
-      Length: 1,
-      Unit: "W",
-      Factor: 1,
-      Type: "int16",
-	  writable: false
+		RegisterName: "GridL3Power",
+		Register: 822,
+		Id: 100,
+		Length: 1,
+		Unit: "W",
+		Factor: 1,
+		Type: "int16",
+		writable: false
     },
     BatteryVoltage: {
-      RegisterName: "BatteryVoltage",
-      Register: 259,
-      Id: 225,
-      Length: 1,
-      Unit: "V",
-      Factor: 0.01,
-      Type: "uint16",
-	  writable: false
+		RegisterName: "BatteryVoltage",
+		Register: 259,
+		Id: 225,
+		Length: 1,
+		Unit: "V",
+		Factor: 0.01,
+		Type: "uint16",
+		writable: false
     },
-    BatteryCurrent: {
+	BatteryCurrent: {
         RegisterName: "BatteryCurrent",
         Register: 261,
         Id: 225,
@@ -227,78 +227,77 @@ function getRegisters() {
         Type: "uint16",
 		writable: false
     },
-	
     Inverter:{
       Registers: {
         InverterL1Power: {
-          RegisterName: "InverterL1Power",
-          Register: 1029,
-          Id: 20,
-          Length: 1,
-          Unit: "W",
-          Factor: 1,
-          Type: "uint16",
-		  writable: false
+			RegisterName: "InverterL1Power",
+			Register: 1029,
+			Id: 20,
+			Length: 1,
+			Unit: "W",
+			Factor: 1,
+			Type: "uint16",
+			writable: false
         },
         InverterL2Power: {
-          RegisterName: "InverterL2Power",
-          Register: 1033,
-          Id: 20,
-          Length: 1,
-          Unit: "W",
-          Factor: 1,
-          Type: "uint16",
-		  writable: false
+			RegisterName: "InverterL2Power",
+			Register: 1033,
+			Id: 20,
+			Length: 1,
+			Unit: "W",
+			Factor: 1,
+			Type: "uint16",
+			writable: false
         },
         InverterL3Power: {
-          RegisterName: "InverterL3Power",
-          Register: 1037,
-          Id: 20,
-          Length: 1,
-          Unit: "W",
-          Factor: 1,
-          Type: "uint16",
-		  writable: false
+			RegisterName: "InverterL3Power",
+			Register: 1037,
+			Id: 20,
+			Length: 1,
+			Unit: "W",
+			Factor: 1,
+			Type: "uint16",
+			writable: false
         },
         InverterL1Current: {
-          RegisterName: "InverterL1Current",
-          Register: 1028,
-          Id: 20,
-          Length: 1,
-          Unit: "A",
-          Factor: 0.1,
-          Type: "uint16",
-		  writable: false
+			RegisterName: "InverterL1Current",
+			Register: 1028,
+			Id: 20,
+			Length: 1,
+			Unit: "A",
+			Factor: 0.1,
+			Type: "uint16",
+			writable: false
         },
         InverterL2Current: {
-          RegisterName: "InverterL2Current",
-          Register: 1032,
-          Id: 20,
-          Length: 1,
-          Unit: "A",
-          Factor: 0.1,
-          Type: "uint16",
-		  writable: false
+			RegisterName: "InverterL2Current",
+			Register: 1032,
+			Id: 20,
+			Length: 1,
+			Unit: "A",
+			Factor: 0.1,
+			Type: "uint16",
+			writable: false
         },
         InverterL3Current: {
-          RegisterName: "InverterL3Current",
-          Register: 1036,
-          Id: 20,
-          Length: 1,
-          Unit: "A",
-          Factor: 0.1,
-          Type: "uint16",
-		  writable: false
+			RegisterName: "InverterL3Current",
+			Register: 1036,
+			Id: 20,
+			Length: 1,
+			Unit: "A",
+			Factor: 0.1,
+			Type: "uint16",
+			writable: false
         },
         InverterTotalPower: {
-          RegisterName: "InverterTotalPower",
-          Register: 1052,
-          Id: 20,
-          Length: 1,
-          Unit: "kW",
-          Factor: 0.1,
-          Type: "int32",
-		  writable: false
+			RegisterName: "InverterTotalPower",
+			Register: 1052,
+			Id: 20,
+			Length: 1,
+			Unit: "kW",
+			Factor: 0.1,
+			Type: "int32",
+			writable: false
         }
       }
     },
@@ -311,8 +310,8 @@ function getRegisters() {
 		Factor: 0.1,
 		Type: "uint16",
 		writable: false
-	  },
-	  GridL2Voltage: {
+	},
+	GridL2Voltage: {
 		RegisterName: "GridL2Voltage",
 		Register: 2618,
 		Id: 30,
@@ -321,8 +320,8 @@ function getRegisters() {
 		Factor: 0.1,
 		Type: "uint16",
 		writable: false
-	  },
-	  GridL3Voltage: {
+	},
+	GridL3Voltage: {
 		RegisterName: "GridL3Voltage",
 		Register: 2620,
 		Id: 30,
@@ -331,8 +330,8 @@ function getRegisters() {
 		Factor: 0.1,
 		Type: "uint16",
 		writable: false
-	  },
-	  GridL1Current: {
+	},
+	GridL1Current: {
 		RegisterName: "GridL1Current",
 		Register: 2617,
 		Id: 30,
@@ -341,8 +340,8 @@ function getRegisters() {
 		Factor: 0.1,
 		Type: "int16",
 		writable: false
-	  },
-	  GridL2Current: {
+	},
+	GridL2Current: {
 		RegisterName: "GridL2Current",
 		Register: 2619,
 		Id: 30,
@@ -351,8 +350,8 @@ function getRegisters() {
 		Factor: 0.1,
 		Type: "int16",
 		writable: false
-	  },
-	  GridL3Current: {
+	},
+	GridL3Current: {
 		RegisterName: "GridL3Current",
 		Register: 2621,
 		Id: 30,
@@ -361,9 +360,8 @@ function getRegisters() {
 		Factor: 0.1,
 		Type: "int16",
 		writable: false
-	  },
-	  
-	  GridL1EnergyFromNet: {
+	},
+	GridL1EnergyFromNet: {
 		RegisterName: "GridL1EnergyFromNet",
 		Register: 2603,
 		Id: 30,
@@ -372,8 +370,8 @@ function getRegisters() {
 		Factor: 0.01,
 		Type: "uint16",
 		writable: false
-	  },
-	  GridL2EnergyFromNet: {
+	},
+	GridL2EnergyFromNet: {
 		RegisterName: "GridL2EnergyFromNet",
 		Register: 2604,
 		Id: 30,
@@ -382,8 +380,8 @@ function getRegisters() {
 		Factor: 0.01,
 		Type: "uint16",
 		writable: false
-	  },
-	  GridL3EnergyFromNet: {
+	},
+	GridL3EnergyFromNet: {
 		RegisterName: "GridL3EnergyFromNet",
 		Register: 2605,
 		Id: 30,
@@ -392,8 +390,8 @@ function getRegisters() {
 		Factor: 0.01,
 		Type: "uint16",
 		writable: false
-	  },
-	  GridL1EnergyToNet: {
+	},
+	GridL1EnergyToNet: {
 		RegisterName: "GridL1EnergyToNet",
 		Register: 2606,
 		Id: 30,
@@ -402,8 +400,8 @@ function getRegisters() {
 		Factor: 0.01,
 		Type: "uint16",
 		writable: false
-	  },
-	  GridL2EnergyToNet: {
+	},
+	GridL2EnergyToNet: {
 		RegisterName: "GridL2EnergyToNet",
 		Register: 2607,
 		Id: 30,
@@ -412,8 +410,8 @@ function getRegisters() {
 		Factor: 0.01,
 		Type: "uint16",
 		writable: false
-	  },
-	  GridL3EnergyToNet: {
+	},
+	GridL3EnergyToNet: {
 		RegisterName: "GridL3EnergyToNet",
 		Register: 2608,
 		Id: 30,
@@ -422,7 +420,19 @@ function getRegisters() {
 		Factor: 0.01,
 		Type: "uint16",
 		writable: false
-	  },
+	},
+	/*
+	DCSystemBatteryVoltage: {
+		RegisterName: "DCSystemBatteryVoltage",
+		Register: 4400,
+		Id: 229,
+		Length: 1,
+		Unit: "V",
+		Factor: 0.01,
+		Type: "uint16",
+		writable: false
+	},
+	*/
   };
 }
 
