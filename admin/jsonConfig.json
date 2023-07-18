@@ -44,6 +44,12 @@
 			"type": "checkbox",
 			"label": "Use MQTT",
 			"help": "Use MQTT as protocol instead of Modbus",
+			"newLine": false
+		},
+		"dcSystemAvailable":{
+			"type": "checkbox",
+			"label": "DC system available",
+			"help": "Check, when you have DC MPPT installed",
 			"newLine": true
 		},
 		"_buyMeACoffee": {

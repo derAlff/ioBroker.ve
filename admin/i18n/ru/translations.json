@@ -4,5 +4,6 @@
     "Port": "Порт",
     "Interval": "Интервал",
     "Use MQTT": "Используйте MQTT",
-    "Count of PV-Inverters": "Count of PV-Inverters"
+    "Count of PV-Inverters": "Count of PV-Inverters",
+    "DC system available": "Доступна система постоянного тока"
 }

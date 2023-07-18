@@ -4,5 +4,6 @@
     "Port": "Porta",
     "Interval": "Intervalo",
     "Use MQTT": "Usar MQTT",
-    "Count of PV-Inverters": "Count of PV-Inverters"
+    "Count of PV-Inverters": "Count of PV-Inverters",
+    "DC system available": "Sistema DC disponível"
 }
