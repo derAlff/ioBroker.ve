@@ -131,6 +131,11 @@ class Ve extends utils.Adapter {
 		this.log.info("config port: " + this.config.victronPort);
 		this.log.info("Number of PV-Inverters: " + this.config.numOfPvInverters);
 
+		// Subscribe writable states
+		await this.subscribeStatesAsync("*BatteryCapacity");
+
+		//await this.subscribeStatesAsync('*');
+
 		if(this.config.victronIp !== "")
 		{
 			// Check IP-Address
@@ -153,6 +158,7 @@ class Ve extends utils.Adapter {
 					// Non-inverter values
 					if(!register.includes("Inverter"))
 					{
+						let run = true;
 						const deviceCount = 1;
 						let sRegisterName = register.toString().split(",")[0];
 						const nRegisterNumber = register[1].Register;
@@ -164,95 +170,104 @@ class Ve extends utils.Adapter {
 						const bRegisterWritable = register[1].writable;
 						let writeValue = null;
 
-						for(let i = 0; i < deviceCount; i++){
-							this.log.debug(`Read ID: '${nRegisterId + i}'`); // DEBUG
-							client.setID(nRegisterId + i);
-							this.log.debug(`Read register: '${nRegisterNumber}'`); // DEBUG
-							const data = await client.readHoldingRegisters(nRegisterNumber, nRegisterLength);
-							if(data !== undefined && data != null){
-								if(data !== undefined)
-								{
-									let out = "";
-									const nV = data.data;
-									const nValue = convertRegister(sRegisterType, nV);
+						if(sRegisterName.includes("DCSystem") && !this.config.dcSystemAvailable)
+						{
+							this.log.debug("Do not use DC-System.");
+							run = false;
+						}
 
-									if(nRegisterFactor > 0)
+						if(run)
+						{
+							for(let i = 0; i < deviceCount; i++){
+								this.log.debug(`Read ID: '${nRegisterId + i}'`); // DEBUG
+								client.setID(nRegisterId + i);
+								this.log.debug(`Read register: '${nRegisterNumber}'`); // DEBUG
+								const data = await client.readHoldingRegisters(nRegisterNumber, nRegisterLength);
+								if(data !== undefined && data != null){
+									if(data !== undefined)
 									{
-										out = (nValue * nRegisterFactor).toFixed(2).toString();
+										let out = "";
+										const nV = data.data;
+										const nValue = convertRegister(sRegisterType, nV);
+
+										if(nRegisterFactor > 0)
+										{
+											out = (nValue * nRegisterFactor).toFixed(2).toString();
+										}
+										else{
+											out = nValue.toString();
+										}
+
+										if(sRegisterName == "ActiveInputSource")
+										{
+											out = activeInputSource[out.toString()];
+										}
+										if(sRegisterName.toLowerCase().includes("battery") && sRegisterName.toLowerCase().includes("lasterror")){
+											// Create folder for Errors in ve.0.Battery.Error
+											sRegisterName = "Battery.Error." + sRegisterName;
+											out = batteryErrors[out.toString()];
+										}
+
+										// Create folders
+										// Battery
+										if(sRegisterName.toLowerCase().includes("battery") && !sRegisterName.toLowerCase().includes("lasterror"))
+										{
+											sRegisterName = "Battery." + sRegisterName;
+										}
+										// AC
+										if(sRegisterName.toLowerCase().includes("ac"))
+										{
+											sRegisterName = "AC." + sRegisterName;
+										}
+										// Grid
+										if(sRegisterName.toLowerCase().includes("grid"))
+										{
+											sRegisterName = "Grid." + sRegisterName;
+										}
+
+										this.log.debug(sRegisterName + ": " + out + " " + sRegisterUnit); // DEBUG
+										/*
+											HERE SET OBJECTS
+										*/
+										if(sRegisterType.includes("uint") && !sRegisterName.toLowerCase().includes("activeinputsource"))
+										{
+											await this.setObjectNotExistsAsync(sRegisterName, {
+												type: "state",
+												common: {
+													name: sRegisterName,
+													type: "number",
+													role: "indicator",
+													unit: sRegisterUnit,
+													read: true,
+													write: bRegisterWritable,
+												},
+												native: {},
+											});
+
+											writeValue = Number(out);
+										}
+										else{
+											await this.setObjectNotExistsAsync(sRegisterName, {
+												type: "state",
+												common: {
+													name: sRegisterName,
+													type: "string",
+													role: "indicator",
+													unit: sRegisterUnit,
+													read: true,
+													write: bRegisterWritable,
+												},
+												native: {},
+											});
+
+											writeValue = out;
+										}
+
+										await this.setStateAsync(sRegisterName, { val: writeValue, ack: true });
 									}
 									else{
-										out = nValue.toString();
+										this.log.debug(`ID: '${nRegisterId + i}' is undefined`); // DEBUG
 									}
-
-									if(sRegisterName == "ActiveInputSource")
-									{
-										out = activeInputSource[out.toString()];
-									}
-									if(sRegisterName.toLowerCase().includes("battery") && sRegisterName.toLowerCase().includes("lasterror")){
-										// Create folder for Errors in ve.0.Battery.Error
-										sRegisterName = "Battery.Error." + sRegisterName;
-										out = batteryErrors[out.toString()];
-									}
-
-									// Create folders
-									// Battery
-									if(sRegisterName.toLowerCase().includes("battery") && !sRegisterName.toLowerCase().includes("lasterror"))
-									{
-										sRegisterName = "Battery." + sRegisterName;
-									}
-									// AC
-									if(sRegisterName.toLowerCase().includes("ac"))
-									{
-										sRegisterName = "AC." + sRegisterName;
-									}
-									// Grid
-									if(sRegisterName.toLowerCase().includes("grid"))
-									{
-										sRegisterName = "Grid." + sRegisterName;
-									}
-
-									this.log.debug(sRegisterName + ": " + out + " " + sRegisterUnit); // DEBUG
-									/*
-										HERE SET OBJECTS
-									*/
-									if(sRegisterType.includes("uint") && !sRegisterName.toLowerCase().includes("activeinputsource"))
-									{
-										await this.setObjectNotExistsAsync(sRegisterName, {
-											type: "state",
-											common: {
-												name: sRegisterName,
-												type: "number",
-												role: "indicator",
-												unit: sRegisterUnit,
-												read: true,
-												write: bRegisterWritable,
-											},
-											native: {},
-										});
-
-										writeValue = Number(out);
-									}
-									else{
-										await this.setObjectNotExistsAsync(sRegisterName, {
-											type: "state",
-											common: {
-												name: sRegisterName,
-												type: "string",
-												role: "indicator",
-												unit: sRegisterUnit,
-												read: true,
-												write: bRegisterWritable,
-											},
-											native: {},
-										});
-
-										writeValue = out;
-									}
-
-									await this.setStateAsync(sRegisterName, { val: writeValue, ack: true });
-								}
-								else{
-									this.log.debug(`ID: '${nRegisterId + i}' is undefined`); // DEBUG
 								}
 							}
 						}
@@ -387,9 +402,11 @@ class Ve extends utils.Adapter {
 	 * @param {ioBroker.State | null | undefined} state
 	 */
 	onStateChange(id, state) {
+
 		if (state) {
 			// The state was changed
 			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
+			this.log.info(`Send via Modbus`);
 		} else {
 			// The state was deleted
 			this.log.info(`state ${id} deleted`);
