@@ -1,34 +1,47 @@
 {
     "common": {
         "name": "ve",
-        "version": "0.3.0",
+        "version": "0.3.1",
         "news": {
-			"0.3.0": {
-				"en": "Added writable variable in victron registers.\nAdded register 1052/TotalPower in victron registers.\nAdded more Grid registers (Voltage, Current, Energy fom net, Energy to net).\nAdded writable variable to createStateAsync() functions in main.js.\nFixed wrong registers for 'Battery Error'.\nAdded checks to create folders in 'Objects' for 'Battery', 'BatteryError', 'AC' and 'Grid'.",
-				"de": "Hinzugefügt schreibbare Variable in victron Register.\nHinzugefügt Register 1052/TotalPower in victron Register.\nHinzu kommen Grid-Register (Voltage, Current, Energy fom net, Energy to net).\nHinzufügen von schreibbaren Variablen, umStateAsync() Funktionen in der Haupt. j).\nBehobene falsche Register für 'Battery Error'.\nEs wurden auch Ordner in Objekten für Batterie, BatteryError, AC und Grid erstellt.",
-				"ru": "Добавлена переменная writable в victron реестры.\nДобавлена регистрация 1052/TotalPower в victron реестрах.\nДобавлены больше Grid реестров (Voltage, Current, Energy fom net, Energy to net).\nДобавлены параметры writable для созданияStateAsync() функции в главном. Джс.\nИсправлены неправильные реестры для 'Battery Error'.\nДобавлены проверки для создания папок в объектах для батареи, BatteryError, AC и Grid.",
-				"pt": "Adicionado variável writable em registros victron.\nAdicionado registro 1052/TotalPower em registros victron.\nAdicionado mais Grid registra (Voltage, Current, Energy fom net, Energy to net).\nAdicionado variável writable para criarStateAsync() funções em principal. Js.\nRegistos errados corrigidos para 'Erro de bateria'.\nVerificações adicionadas para criar pastas em Objetos para Bateria, BatteryError, AC e Grade.",
-				"nl": "Toegevoegd schrijfbaar variabel in vitron registers.\nGeregistreerd op naam van 1052/TotalPower in vitron registers.\nVoegde meer Grid registers toe. (Voltage, Current, Energy Fom net, Energie naar netten.\".\nToegevoegd schrijfbaar variabel om SStateAsync te creëren. Js.\nVerkeerde kentekens voor 'Battery Error'.\nToegevoegde cheques om folders te creëren in Objects voor Battery, BatteryError, AC en Grid.",
-				"fr": "Ajout d'une variable écriture dans les registres victron.\nAjout du registre 1052/TotalPower dans les registres de victron.\nAjout d'autres registres Grid (Voltage, Current, Energy fom net, Energy to net).\nAjout de la variable writable pour créer des fonctionsStateAsync() dans main. js.\nCorrection de registres incorrects pour 'Battery Error'.\nAjout de vérifications pour créer des dossiers dans Objets pour Batterie, BatteryError, AC et Grid.",
-				"it": "Aggiunto variabile writable in victron registri.\nAggiunto registro 1052/TotalPower in victron registri.\nAggiunti altri registri Grid (Voltage, Corrente, Energy fom net, Energy to net).\nAggiunto variabile scrivibile per creare funzioniStateAsync() in principale. j.\nRegistrati errati corretti per 'Errore di batteria'.\nAggiunti i controlli per creare cartelle in Oggetti per Batteria, BatteryError, AC e Grid.",
-				"es": "Añadido variable writable in victron registers.\nRegistro 1052/TotalPower in victron registers.\nAñadido más Registros de Grid (Voltaje, corriente, red de fom de energía, energía a red).\nVariable adicional para crear funciones StateAsync() en principal. js.\nRegistros incorrectos fijos para 'Bloqueo de batería'.\nSe agregaron cheques para crear carpetas en objetos para batería, batería, aire acondicionado y rejilla.",
-				"pl": "Added writable variable in the Victron registers (ang.).\nDodany rejestr 1052/TotalPower w rejestrach victronów.\nDodano więcej rejestrów Grid (Voltage, Current, Energy Fom net, Energy to net).\nAdded writable variable to tworzenie funkcjiStateAsync() w głównej mierze. js.\nFixed bad registers for ‘Battery Error’ (ang.).\nWstępne sprawdzanie tworzy foldery w Objects for Battery, BatteryError, AC i Grid.",
-				"uk": "Додана змінна в реєстрах victron.\nДодано реєстрацію 1052/TotalPower в реєстрах victron.\nДодано більше Сітчастих реєстрів (Voltage, Current, Energy fom net, Energy to net).\nДодана writable змінна для створенняStateAsync() функції в основному. свінгери.\nВиправлено неправильні реєстри для \"Помилки\".\nДодано перевірки для створення папок в об'єктах для акумулятора, акумулятора, AC та Grid.",
-				"zh-cn": "在天文登记册中增加可量化的变量。.\n在天体登记册中增列了1052/Totalios。.\n增加Grid登记册(目前、能源网、能源网和净能源)。.\n增加可量化的可变性,以产生主要国家阿森克()职能。 j.\n为Battery Error的错误登记册。.\n在Battery、BatteryError、AC 和Grid等物品上制造了手。."
-              },
-			"0.2.2": {
+            "0.3.1": {
+                "en": "Fixed testing errors. Translated Admin UI. Updated README.",
+                "de": "Testfehler behoben. Übersetzte Admin-Benutzeroberfläche. Aktualisierte README-Datei.",
+                "ru": "Исправлены ошибки тестирования. Переведен интерфейс администратора. Обновлен README.",
+                "pt": "Erros de teste corrigidos. IU do administrador traduzida. LEIA-ME atualizado.",
+                "nl": "Vaste testfouten. Vertaalde beheerdersinterface. LEESMIJ bijgewerkt.",
+                "fr": "Correction des erreurs de test. Interface utilisateur d'administration traduite. LISEZMOI mis à jour.",
+                "it": "Risolti errori di test. Interfaccia utente di amministrazione tradotta. LEGGIMI aggiornato.",
+                "es": "Errores de prueba fijos. IU de administración traducida. Léame actualizado.",
+                "pl": "Naprawiono błędy testowania. Przetłumaczony interfejs administratora. Zaktualizowano plik README.",
+                "uk": "Виправлені помилки тестування. Перекладений інтерфейс адміністратора. Оновлено README.",
+                "zh-cn": "修复了测试错误。翻译后的管理用户界面。更新了自述文件。"
+            },
+            "0.3.0": {
+                "en": "Added writable variable in victron registers.\nAdded register 1052/TotalPower in victron registers.\nAdded more Grid registers (Voltage, Current, Energy fom net, Energy to net).\nAdded writable variable to createStateAsync() functions in main.js.\nFixed wrong registers for 'Battery Error'.\nAdded checks to create folders in 'Objects' for 'Battery', 'BatteryError', 'AC' and 'Grid'.",
+                "de": "Hinzugefügt schreibbare Variable in victron Register.\nHinzugefügt Register 1052/TotalPower in victron Register.\nHinzu kommen Grid-Register (Voltage, Current, Energy fom net, Energy to net).\nHinzufügen von schreibbaren Variablen, umStateAsync() Funktionen in der Haupt. j).\nBehobene falsche Register für 'Battery Error'.\nEs wurden auch Ordner in Objekten für Batterie, BatteryError, AC und Grid erstellt.",
+                "ru": "Добавлена переменная writable в victron реестры.\nДобавлена регистрация 1052/TotalPower в victron реестрах.\nДобавлены больше Grid реестров (Voltage, Current, Energy fom net, Energy to net).\nДобавлены параметры writable для созданияStateAsync() функции в главном. Джс.\nИсправлены неправильные реестры для 'Battery Error'.\nДобавлены проверки для создания папок в объектах для батареи, BatteryError, AC и Grid.",
+                "pt": "Adicionado variável writable em registros victron.\nAdicionado registro 1052/TotalPower em registros victron.\nAdicionado mais Grid registra (Voltage, Current, Energy fom net, Energy to net).\nAdicionado variável writable para criarStateAsync() funções em principal. Js.\nRegistos errados corrigidos para 'Erro de bateria'.\nVerificações adicionadas para criar pastas em Objetos para Bateria, BatteryError, AC e Grade.",
+                "nl": "Toegevoegd schrijfbaar variabel in vitron registers.\nGeregistreerd op naam van 1052/TotalPower in vitron registers.\nVoegde meer Grid registers toe. (Voltage, Current, Energy Fom net, Energie naar netten.\".\nToegevoegd schrijfbaar variabel om SStateAsync te creëren. Js.\nVerkeerde kentekens voor 'Battery Error'.\nToegevoegde cheques om folders te creëren in Objects voor Battery, BatteryError, AC en Grid.",
+                "fr": "Ajout d'une variable écriture dans les registres victron.\nAjout du registre 1052/TotalPower dans les registres de victron.\nAjout d'autres registres Grid (Voltage, Current, Energy fom net, Energy to net).\nAjout de la variable writable pour créer des fonctionsStateAsync() dans main. js.\nCorrection de registres incorrects pour 'Battery Error'.\nAjout de vérifications pour créer des dossiers dans Objets pour Batterie, BatteryError, AC et Grid.",
+                "it": "Aggiunto variabile writable in victron registri.\nAggiunto registro 1052/TotalPower in victron registri.\nAggiunti altri registri Grid (Voltage, Corrente, Energy fom net, Energy to net).\nAggiunto variabile scrivibile per creare funzioniStateAsync() in principale. j.\nRegistrati errati corretti per 'Errore di batteria'.\nAggiunti i controlli per creare cartelle in Oggetti per Batteria, BatteryError, AC e Grid.",
+                "es": "Añadido variable writable in victron registers.\nRegistro 1052/TotalPower in victron registers.\nAñadido más Registros de Grid (Voltaje, corriente, red de fom de energía, energía a red).\nVariable adicional para crear funciones StateAsync() en principal. js.\nRegistros incorrectos fijos para 'Bloqueo de batería'.\nSe agregaron cheques para crear carpetas en objetos para batería, batería, aire acondicionado y rejilla.",
+                "pl": "Added writable variable in the Victron registers (ang.).\nDodany rejestr 1052/TotalPower w rejestrach victronów.\nDodano więcej rejestrów Grid (Voltage, Current, Energy Fom net, Energy to net).\nAdded writable variable to tworzenie funkcjiStateAsync() w głównej mierze. js.\nFixed bad registers for ‘Battery Error’ (ang.).\nWstępne sprawdzanie tworzy foldery w Objects for Battery, BatteryError, AC i Grid.",
+                "uk": "Додана змінна в реєстрах victron.\nДодано реєстрацію 1052/TotalPower в реєстрах victron.\nДодано більше Сітчастих реєстрів (Voltage, Current, Energy fom net, Energy to net).\nДодана writable змінна для створенняStateAsync() функції в основному. свінгери.\nВиправлено неправильні реєстри для \"Помилки\".\nДодано перевірки для створення папок в об'єктах для акумулятора, акумулятора, AC та Grid.",
+                "zh-cn": "在天文登记册中增加可量化的变量。.\n在天体登记册中增列了1052/Totalios。.\n增加Grid登记册(目前、能源网、能源网和净能源)。.\n增加可量化的可变性,以产生主要国家阿森克()职能。 j.\n为Battery Error的错误登记册。.\n在Battery、BatteryError、AC 和Grid等物品上制造了手。."
+            },
+            "0.2.2": {
                 "en": "Fixed 'check and lint' and integration test. Changed version in package.json and io-package.json\n",
-				"de": "Behobener 'Check- und Lint'- und Integrationstest. Geänderte Version im Paket. json und io-package. Json\n",
-				"ru": "Исправлена проверка и lint' и проверка интеграции. Изменена версия в пакете. json и io-package. Джсон\n",
-				"pt": "Corrigido 'check e lint' e teste de integração. Versão alterada no pacote. json e io-package. O que foi\n",
-				"nl": "Gerepareerd 'check and lint' en integratietest. Veranderde versie in pakket. Json en io-package. Json\n",
-				"fr": "Correction 'check and lint' et le test d'intégration. Version modifiée dans le paquet. Json et io-package. json\n",
-				"it": "Risolto \"check and lint\" e test di integrazione. Versione modificata nel pacchetto. json e io-package. J\n",
-				"es": "Prueba de integración y control fijo. Versión modificada en paquete. json y io-package. json\n",
-				"pl": "Fixed 'check and lint' and integration test. Wersja zmienna w pakiecie. json i io-package. json\n",
-				"uk": "Виправлено 'check and lint' і тестування інтеграції. Змінена версія в пакеті. json і io-package. свінгери\n",
-				"zh-cn": "固定的检查和标记以及一体化试验。 一揽子计划的修改版本。 json和碘。 json\n"
-              },
+                "de": "Behobener 'Check- und Lint'- und Integrationstest. Geänderte Version im Paket. json und io-package. Json\n",
+                "ru": "Исправлена проверка и lint' и проверка интеграции. Изменена версия в пакете. json и io-package. Джсон\n",
+                "pt": "Corrigido 'check e lint' e teste de integração. Versão alterada no pacote. json e io-package. O que foi\n",
+                "nl": "Gerepareerd 'check and lint' en integratietest. Veranderde versie in pakket. Json en io-package. Json\n",
+                "fr": "Correction 'check and lint' et le test d'intégration. Version modifiée dans le paquet. Json et io-package. json\n",
+                "it": "Risolto \"check and lint\" e test di integrazione. Versione modificata nel pacchetto. json e io-package. J\n",
+                "es": "Prueba de integración y control fijo. Versión modificada en paquete. json y io-package. json\n",
+                "pl": "Fixed 'check and lint' and integration test. Wersja zmienna w pakiecie. json i io-package. json\n",
+                "uk": "Виправлено 'check and lint' і тестування інтеграції. Змінена версія в пакеті. json і io-package. свінгери\n",
+                "zh-cn": "固定的检查和标记以及一体化试验。 一揽子计划的修改版本。 json和碘。 json\n"
+            },
             "0.2.1": {
                 "en": "Added function with try...catch for receive inverter data",
                 "de": "Zusatzfunktion mit Try...Katch für den Empfang von Wechselrichterdaten",
@@ -41,7 +54,7 @@
                 "pl": "Funkcja dodawana do testu..catch za odwracanie danych",
                 "uk": "Додано функцію з try...catch для отримання інверторних даних",
                 "zh-cn": "增加工作功能。"
-              },
+            },
             "0.2.0": {
                 "en": "Process separate inverter object (multiple inverters) and write to data points. Updated \"Getestete Geräte\" in Readme. Inserted section \"configure\" in Readme. Updated io-package.json. ",
                 "de": "Bearbeiten Sie separate Wechselrichterobjekt (mehrfache Wechselrichter) und schreiben Sie an Datenpunkte. Aktualisierte \"Getestete Geräte\" in Readme. Einfügen Abschnitt Konfigurieren in Readme. Aktualisierte io-package.json.",
@@ -54,7 +67,7 @@
                 "pl": "Proces odwrócenia odwrócenia (współczynnik wielokrotnych) i zapisywany na punkty danych. \"Getestete Geräte\" w Readme. Wykorzystywana sekcja jest w Readme. Wyd. io-package.json.",
                 "uk": "Процес окремий інверторний об'єкт (багаторазові інвертори) і напишіть на точки даних. Оновлено \"Getestete Geräte\" в Readme. Вмонтований розділ, налаштовується в Readme. Оновлено io-package.json.",
                 "zh-cn": "处理不同的物体(纵火器)并填写数据点。 阅读摘要中更新的“Getestete Geräte”。 编页图。 最新包装."
-              },
+            },
             "0.1.1": {
                 "en": "Changed inverter register to a seperate object to use multiple PV-Inverters. Added textbox in UI to set a count of PV-Inverters.",
                 "de": "Wechseln Sie das Wechselrichterregister in ein seperate Objekt, um mehrere PV-Inverter zu verwenden. Textfeld in UI hinzugefügt, um eine Anzahl von PV-Invertern einzustellen.",
@@ -163,7 +176,8 @@
         "victronPort": 502,
         "useMqtt": false,
         "fetchInterval": 5000,
-        "numOfPvInverters": 0
+        "numOfPvInverters": 0,
+        "dcSystemAvailable": false
     },
     "objects": [],
     "instanceObjects": []
