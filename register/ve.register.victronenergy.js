@@ -432,6 +432,68 @@ function getRegisters() {
 		Type: "uint16",
 		writable: false
 	},
+	
+	BatteryVoltage_System: {
+        RegisterName: "BatteryVoltage_System",
+        Register: 840,
+        Id: 100,
+        Length: 1,
+        Unit: "V",
+        Factor: 0.1,
+        Type: "uint16",
+		writable: false
+    },
+	BatteryCurrent_System: {
+        RegisterName: "BatteryCurrent_System",
+        Register: 841,
+        Id: 100,
+        Length: 1,
+        Unit: "A",
+        Factor: 0.1,
+        Type: "int16",
+		writable: false
+    },
+	BatteryPower_System: {
+        RegisterName: "BatteryPower_System",
+        Register: 842,
+        Id: 100,
+        Length: 1,
+        Unit: "W",
+        Factor: 1,
+        Type: "int16",
+		writable: false
+    },
+	BatterySOC_System: {
+        RegisterName: "BatterySOC_System",
+        Register: 843,
+        Id: 100,
+        Length: 1,
+        Unit: "%",
+        Factor: 1,
+        Type: "uint16",
+		writable: false
+    },
+	BatteryState_System: {
+        RegisterName: "BatteryState_System",
+        Register: 844,
+        Id: 100,
+        Length: 1,
+        Unit: "",
+        Factor: 1,
+        Type: "uint16",
+		writable: false
+    },
+	/*
+	Battery: {
+        RegisterName: "Battery",
+        Register: 1288,
+        Id: 100,
+        Length: 1,
+        Unit: "",
+        Factor: 1,
+        Type: "uint16",
+		writable: false
+    },
 	*/
   };
 }

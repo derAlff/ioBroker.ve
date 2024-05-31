@@ -1,65 +1,143 @@
 {
 	"i18n": true,
-	"type": "panel",
+	"type": "tabs",
 	"items": {
-		"victronIp": {
-			"type": "text",
-			"sm": 12,
-			"md": 6,
-			"lg": 6,
-			"label": "IP-Address",
-			"help": "IP-Address of VictronEnergy GX devcice"
+		"main":{
+			"type": "panel",
+			"label": "Main",
+			"items": {
+				"victronIp": {
+					"type": "text",
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"label": "IP-Address",
+					"help": "IP-Address of VictronEnergy GX devcice"
+				},
+				"victronPort": {
+					"type": "number",
+					"min": 1,
+					"max": 65535,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"label": "Port",
+					"help": "Network port of VictronEnergy GX devcice (at the moment only Modbus!)"
+				},
+				"numOfPvInverters":{
+					"type": "number",
+					"min": 0,
+					"max": 10,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"label": "Count of PV-Inverters",
+					"help": "Number of connected PV-Inverters (i.e. 3 SMA STP-10000TL-10 via Modbus)"
+				},
+				"fetchInterval": {
+					"type": "number",
+					"min": 5000,
+					"max": 3600000,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"label": "Interval",
+					"help": "Interval to receive data from Victron Energy GX device (in Milliseconds!)"
+				},	
+				"useMqtt": {
+					"type": "checkbox",
+					"label": "Use MQTT",
+					"help": "Use MQTT as protocol instead of Modbus",
+					"newLine": false
+				},
+				"dcSystemAvailable":{
+					"type": "checkbox",
+					"label": "DC system available",
+					"help": "Check, when you have DC MPPT installed",
+					"newLine": true
+				},
+				"_buyMeACoffee": {
+					"newLine": true,
+					"type": "staticImage",
+					"sm": 12,
+					"md": 6,
+					"lg": 3,
+					"href": "https://www.buymeacoffee.com/deralffiot",
+					"src": "buymeacoffee.png"
+				}
+			}
 		},
-		"victronPort": {
-			"type": "number",
-			"min": 1,
-			"max": 65535,
-			"sm": 12,
-			"md": 6,
-			"lg": 6,
-			"label": "Port",
-			"help": "Network port of VictronEnergy GX devcice (at the moment only Modbus!)"
-		},
-		"numOfPvInverters":{
-			"type": "number",
-			"min": 0,
-			"max": 10,
-			"sm": 12,
-			"md": 6,
-			"lg": 6,
-			"label": "Count of PV-Inverters",
-			"help": "Number of connected PV-Inverters (i.e. 3 SMA STP-10000TL-10 via Modbus)"
-		},
-		"fetchInterval": {
-			"type": "number",
-			"min": 5000,
-			"max": 3600000,
-			"sm": 12,
-			"md": 6,
-			"lg": 6,
-			"label": "Interval",
-			"help": "Interval to receive data from Victron Energy GX device (in Milliseconds!)"
-		},	
-		"useMqtt": {
-			"type": "checkbox",
-			"label": "Use MQTT",
-			"help": "Use MQTT as protocol instead of Modbus",
-			"newLine": false
-		},
-		"dcSystemAvailable":{
-			"type": "checkbox",
-			"label": "DC system available",
-			"help": "Check, when you have DC MPPT installed",
-			"newLine": true
-		},
-		"_buyMeACoffee": {
-			"newLine": true,
-			"type": "staticImage",
-			"sm": 12,
-			"md": 6,
-			"lg": 3,
-			"href": "https://www.buymeacoffee.com/deralffiot",
-			"src": "buymeacoffee.png"
-		}
+		"mppts": {
+            "type": "panel",
+            "label": "MPPT & SmartSolar",
+            "items": {
+                "mppts": {
+                    "type": "table",
+                    "sm": 10,
+                    "md": 10,
+                    "lg": 10,
+                    "label": "MPPT & SmartSolar",
+                    "items": [
+                        {
+                            "type": "checkbox",
+                            "attr": "enabled",
+                            "width": "5%",
+                            "title": "Enable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+						{
+                            "type": "checkbox",
+                            "attr": "vedirect",
+                            "width": "5%",
+                            "title": "VE.Direct",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+						{
+                            "type": "checkbox",
+                            "attr": "ethernet",
+                            "width": "5%",
+                            "title": "Ethernet",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+						{
+                            "type": "text",
+                            "attr": "device",
+                            "width": "50%",
+                            "title": "Device",
+                            "filter": true,
+                            "sort": true,
+                            "default": ""
+                        },
+                        {
+                            "type": "number",
+                            "min": 0,
+                            "max": 999,
+                            "step": 1,
+                            "attr": "id",
+                            "width": "15%",
+                            "title": "Device-ID",
+                            "filter": true,
+                            "sort": true,
+                            "default": 100
+                        },
+                        {
+                            "type": "text",
+                            "attr": "ipaddress",
+                            "width": "20%",
+                            "title": "IP-Address",
+                            "filter": true,
+                            "sort": true,
+                            "default": ""
+                        }
+                    ]
+                }
+            }
+        }
 	}
 }

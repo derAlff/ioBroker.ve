@@ -5,5 +5,8 @@
     "Interval": "Intervallo",
     "Use MQTT": "Usa MQTT",
     "Count of PV-Inverters": "Count of PV-Inverters",
-    "DC system available": "Sistema CC disponibile"
+    "DC system available": "Sistema CC disponibile",
+    "Enable": "Abilitare",
+    "Device": "Dispositivo",
+    "Device-ID": "ID del dispositivo"
 }

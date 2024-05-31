@@ -5,5 +5,8 @@
     "Interval": "Intervall",
     "Use MQTT": "MQTT verwenden",
     "Count of PV-Inverters": "Anzahl PV-Wechselrichter",
-    "DC system available": "DC System installiert"
+    "DC system available": "DC System installiert",
+    "Enable": "Aktivieren",
+    "Device": "Gerät",
+    "Device-ID": "Geräte ID"
 }

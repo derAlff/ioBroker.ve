@@ -30,6 +30,9 @@ Bisher wurden folgende Geräte erfolgreich getestet:
 
 
 ## Changelog
+### Current work
+* (derAlff) Added MPPTs (test)
+
 ### 0.3.1
 * (derAlff) Fixed testing errors
 * (derAlff) Translated Admin UI

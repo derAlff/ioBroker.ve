@@ -5,5 +5,8 @@
     "Interval": "Інтервал",
     "Use MQTT": "Використовуйте MQTT",
     "Count of PV-Inverters": "Count of PV-Inverters",
-    "DC system available": "Доступна система постійного струму"
+    "DC system available": "Доступна система постійного струму",
+    "Enable": "Увімкнути",
+    "Device": "пристрій",
+    "Device-ID": "Ідентифікатор пристрою"
 }

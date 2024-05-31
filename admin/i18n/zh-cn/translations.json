@@ -5,5 +5,8 @@
     "Interval": "间隔",
     "Use MQTT": "使用 MQTT",
     "Count of PV-Inverters": "Count of PV-Inverters",
-    "DC system available": "可用直流系统"
+    "DC system available": "可用直流系统",
+    "Enable": "使能够",
+    "Device": "设备",
+    "Device-ID": "设备ID"
 }

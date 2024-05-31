@@ -177,7 +177,8 @@
         "useMqtt": false,
         "fetchInterval": 5000,
         "numOfPvInverters": 0,
-        "dcSystemAvailable": false
+        "dcSystemAvailable": false,
+        "mppts": {}
     },
     "objects": [],
     "instanceObjects": []
