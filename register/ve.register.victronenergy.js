@@ -40,6 +40,16 @@ function getRegisters() {
 		Type: "uint16",
 		writable: false
     },
+	DCCoupledPower: {
+		RegisterName: "DCCoupledPower",
+		Register: 850,
+		Id: 100,
+		Length: 1,
+		Unit: "kWh",
+		Factor: 1,
+		Type: "uint16",
+		writable: false
+	},
     GridL1Power: {
 		RegisterName: "GridL1Power",
 		Register: 820,
@@ -421,6 +431,7 @@ function getRegisters() {
 		Type: "uint16",
 		writable: false
 	},
+	
 	/*
 	DCSystemBatteryVoltage: {
 		RegisterName: "DCSystemBatteryVoltage",

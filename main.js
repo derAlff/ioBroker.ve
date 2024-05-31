@@ -219,6 +219,7 @@ class Ve extends utils.Adapter {
 						// Non-inverter values
 						if(!register.includes("Inverter"))
 						{
+							this.log.debug(JSON.stringify(register));
 							let run = true;
 							const deviceCount = 1;
 							let sRegisterName = register.toString().split(",")[0];

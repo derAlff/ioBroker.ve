@@ -31,7 +31,8 @@ Bisher wurden folgende Geräte erfolgreich getestet:
 
 ## Changelog
 ### Current work
-* (derAlff) Added MPPTs (test)
+* (derAlff) Added MPPTs (to test)
+* (derAlff) Added DCCoupledPower (to test) - [Issue #24](https://github.com/derAlff/ioBroker.ve/issues/24)
 
 ### 0.3.1
 * (derAlff) Fixed testing errors
