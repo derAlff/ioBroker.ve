@@ -15,14 +15,15 @@ const registers = require("./register/ve.register.victronenergy");
 const ve = registers.getRegisters();
 
 let interval;
-const DISABLE = false;
+const DISABLE = true;
 
+/* #001 To show actual battery state in datapoint. Not yet implemented.
 const batteryState_System = {
 	0: "idle",
 	1: "charging",
 	2: "discharging"
 };
-
+*/
 const activeInputSource ={
 	//0=Unknown;1=Grid;2=Generator;3=Shore power;240=Not connected
 	0: "Unknown",
@@ -142,20 +143,25 @@ class Ve extends utils.Adapter {
 
 		this.log.info(`MPPTs: ${JSON.stringify(this.config.mppts)}`);
 
-		let oMppts = this.config.mppts;
-		if(oMppts.length > 0)
+		const oMppts = await this.config.mppts;
+		this.log.debug(`Length of 'oMPPT': ${oMppts.length}`);
+
+		if(oMppts != null && oMppts !== undefined)
 		{
-			this.log.debug(`Length of 'oMppts' > 0: (${oMppts.length})`);
+			this.log.debug(`Length of 'oMppts' > 0: ${oMppts.length}`);
+			this.log.error(`1st Mppt: '${JSON.stringify(oMppts[0])}'`);
+			this.log.error(`2nd Mppt: '${JSON.stringify(oMppts[1])}'`);
+
 			oMppts.forEach(mppt => {
 				this.log.debug("Complete JSON: " + JSON.stringify(mppt));
 
-				let bEnabled = mppt.enabled;
-				let bVedirect = mppt.vedirect;
-				let bEthernet = mppt.ethernet;
-				let sDeviceName = mppt.device;
-				let nDeviceId = mppt.id;
-				let sIpAddress = mppt.ipaddress;
-				
+				const bEnabled = mppt.enabled;
+				const bVedirect = mppt.vedirect;
+				const bEthernet = mppt.ethernet;
+				const sDeviceName = mppt.device;
+				const nDeviceId = mppt.id;
+				const sIpAddress = mppt.ipaddress;
+
 				this.log.debug(`bEnabled: '${bEnabled}'`);
 				this.log.debug(`bVedirect: '${bVedirect}'`);
 				this.log.debug(`bEthernet: '${bEthernet}'`);
@@ -176,7 +182,7 @@ class Ve extends utils.Adapter {
 					this.log.warn(`The MPPT '${sDeviceName}' has all options (VE.Direct or Ethernet) assigned. Please assign only option to the device.`);
 					return;
 				}
-				if(bVedirect && nDeviceId.length <= 0) 
+				if(bVedirect && nDeviceId.length <= 0)
 				{
 					this.log.warn(`VE.Direct assigned. But there is no Device-ID available`);
 					return;

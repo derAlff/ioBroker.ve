@@ -178,7 +178,7 @@
         "fetchInterval": 5000,
         "numOfPvInverters": 0,
         "dcSystemAvailable": false,
-        "mppts": {}
+        "mppts": []
     },
     "objects": [],
     "instanceObjects": []

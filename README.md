@@ -30,9 +30,16 @@ Bisher wurden folgende Geräte erfolgreich getestet:
 
 
 ## Changelog
+### ToDoInTheFuture
+* #001 Add 'batteryState_System'
+
 ### Current work
 * (derAlff) Added MPPTs (to test)
 * (derAlff) Added DCCoupledPower (to test) - [Issue #24](https://github.com/derAlff/ioBroker.ve/issues/24)
+* (derAlff) Fixed lint issues
+* (derAlff) Fixed problem with object and .length
+* (derAlff) Added 'lint:fix' to package.json
+* (derAlff) Updated Readme 
 
 ### 0.3.1
 * (derAlff) Fixed testing errors

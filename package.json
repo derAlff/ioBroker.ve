@@ -64,6 +64,7 @@
     "test": "npm run test:js && npm run test:package",
     "check": "tsc --noEmit -p tsconfig.check.json",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "translate": "translate-adapter"
   },
   "bugs": {

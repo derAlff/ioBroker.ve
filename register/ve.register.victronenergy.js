@@ -431,7 +431,7 @@ function getRegisters() {
 		Type: "uint16",
 		writable: false
 	},
-	
+
 	/*
 	DCSystemBatteryVoltage: {
 		RegisterName: "DCSystemBatteryVoltage",
@@ -443,7 +443,7 @@ function getRegisters() {
 		Type: "uint16",
 		writable: false
 	},
-	
+
 	BatteryVoltage_System: {
         RegisterName: "BatteryVoltage_System",
         Register: 840,
