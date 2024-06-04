@@ -146,7 +146,7 @@ class Ve extends utils.Adapter {
 		const oMppts = await this.config.mppts;
 		this.log.debug(`Length of 'oMPPT': ${oMppts.length}`);
 
-		if(oMppts != null && oMppts !== undefined)
+		if(oMppts != null && oMppts !== undefined && oMppts.length > 0)
 		{
 			this.log.debug(`Length of 'oMppts' > 0: ${oMppts.length}`);
 			this.log.error(`1st Mppt: '${JSON.stringify(oMppts[0])}'`);
