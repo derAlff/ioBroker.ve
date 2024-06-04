@@ -19,7 +19,8 @@
     "url": "https://github.com/derAlff/ioBroker.ve.git"
   },
   "engines": {
-    "node": ">= 14"
+    "node": ">= 18.0.0",
+    "npm":">=8.19.4"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^2.6.7",
