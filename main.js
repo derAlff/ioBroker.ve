@@ -15,7 +15,8 @@ const registers = require("./register/ve.register.victronenergy");
 const ve = registers.getRegisters();
 
 let interval;
-const DISABLE = false;
+const RUN_OLD_Program = true;
+const RUN_NEW_PROGRAM = false;
 
 /* #001 To show actual battery state in datapoint. Not yet implemented.
 const batteryState_System = {
@@ -141,69 +142,71 @@ class Ve extends utils.Adapter {
 		this.log.info("Number of PV-Inverters: " + this.config.numOfPvInverters);
 		this.log.info(`MPPT installed: ${this.config.dcSystemAvailable}`);
 
-		this.log.info(`MPPTs: ${JSON.stringify(this.config.mppts)}`);
-
-		const oMppts = await this.config.mppts;
-		this.log.debug(`Length of 'oMPPT': ${oMppts.length}`);
-
-		if(oMppts != null && oMppts !== undefined && oMppts.length > 0)
-		{
-			this.log.debug(`Length of 'oMppts' > 0: ${oMppts.length}`);
-			this.log.error(`1st Mppt: '${JSON.stringify(oMppts[0])}'`);
-			this.log.error(`2nd Mppt: '${JSON.stringify(oMppts[1])}'`);
-
-			oMppts.forEach(mppt => {
-				this.log.debug("Complete JSON: " + JSON.stringify(mppt));
-
-				const bEnabled = mppt.enabled;
-				const bVedirect = mppt.vedirect;
-				const bEthernet = mppt.ethernet;
-				const sDeviceName = mppt.device;
-				const nDeviceId = mppt.id;
-				const sIpAddress = mppt.ipaddress;
-
-				this.log.debug(`bEnabled: '${bEnabled}'`);
-				this.log.debug(`bVedirect: '${bVedirect}'`);
-				this.log.debug(`bEthernet: '${bEthernet}'`);
-				this.log.debug(`sDeviceName: '${sDeviceName}'`);
-				this.log.debug(`nDeviceId: '${nDeviceId}'`);
-				this.log.debug(`sIpAddress: '${sIpAddress}'`);
-
-				if(!bEnabled){
-					this.log.warn(`MPPT '${sDeviceName}' is disabled.`);
-					return;
-				}
-				if(!bVedirect && !bEthernet)
-				{
-					this.log.warn(`The MPPT '${sDeviceName}' has no option (VE.Direct or Ethernet) assigned. Please assign an option to the device.`);
-					return;
-				}
-				if(bVedirect && bEthernet)
-				{
-					this.log.warn(`The MPPT '${sDeviceName}' has all options (VE.Direct or Ethernet) assigned. Please assign only option to the device.`);
-					return;
-				}
-				if(bVedirect && nDeviceId.length <= 0)
-				{
-					this.log.warn(`VE.Direct assigned. But there is no Device-ID available`);
-					return;
-				}
-				if(bEthernet && !checkIfValidIP(sIpAddress)){
-					this.log.warn(`Ethernet assigned but the IP-Address is not correct.`);
-				}
-
-			});
-
-		}
-		else{
-			this.log.debug(`Length of 'oMppts' <= 0`);
-		}
+		
 
 		// Subscribe writable states
 		await this.subscribeStatesAsync("*BatteryCapacity");
 
 		//await this.subscribeStatesAsync('*');
-		if(!DISABLE){
+		if(RUN_OLD_Program){
+			this.log.info(`MPPTs: ${JSON.stringify(this.config.mppts)}`);
+
+			const oMppts = await this.config.mppts;
+			this.log.debug(`Length of 'oMPPT': ${oMppts.length}`);
+
+			if(oMppts != null && oMppts !== undefined && oMppts.length > 0)
+			{
+				this.log.debug(`Length of 'oMppts' > 0: ${oMppts.length}`);
+				this.log.error(`1st Mppt: '${JSON.stringify(oMppts[0])}'`);
+				this.log.error(`2nd Mppt: '${JSON.stringify(oMppts[1])}'`);
+
+				oMppts.forEach(mppt => {
+					this.log.debug("Complete JSON: " + JSON.stringify(mppt));
+
+					const bEnabled = mppt.enabled;
+					const bVedirect = mppt.vedirect;
+					const bEthernet = mppt.ethernet;
+					const sDeviceName = mppt.device;
+					const nDeviceId = mppt.id;
+					const sIpAddress = mppt.ipaddress;
+
+					this.log.debug(`bEnabled: '${bEnabled}'`);
+					this.log.debug(`bVedirect: '${bVedirect}'`);
+					this.log.debug(`bEthernet: '${bEthernet}'`);
+					this.log.debug(`sDeviceName: '${sDeviceName}'`);
+					this.log.debug(`nDeviceId: '${nDeviceId}'`);
+					this.log.debug(`sIpAddress: '${sIpAddress}'`);
+
+					if(!bEnabled){
+						this.log.warn(`MPPT '${sDeviceName}' is disabled.`);
+						return;
+					}
+					if(!bVedirect && !bEthernet)
+					{
+						this.log.warn(`The MPPT '${sDeviceName}' has no option (VE.Direct or Ethernet) assigned. Please assign an option to the device.`);
+						return;
+					}
+					if(bVedirect && bEthernet)
+					{
+						this.log.warn(`The MPPT '${sDeviceName}' has all options (VE.Direct or Ethernet) assigned. Please assign only option to the device.`);
+						return;
+					}
+					if(bVedirect && nDeviceId.length <= 0)
+					{
+						this.log.warn(`VE.Direct assigned. But there is no Device-ID available`);
+						return;
+					}
+					if(bEthernet && !checkIfValidIP(sIpAddress)){
+						this.log.warn(`Ethernet assigned but the IP-Address is not correct.`);
+					}
+
+				});
+
+			}
+			else{
+				this.log.debug(`Length of 'oMppts' <= 0`);
+			}
+
 			if(this.config.victronIp !== "")
 			{
 				// Check IP-Address
@@ -422,7 +425,30 @@ class Ve extends utils.Adapter {
 			}
 		}
 		else{
-			this.log.warn("Program is disabled for tests...");
+			this.log.warn("Old program is disabled for tests...");
+		}
+
+		if(RUN_NEW_PROGRAM){
+			if(this.config.victronIp !== ""){ // The IP Address of victron GX Device must be set!
+				if(checkIfValidIP(this.config.victronIp)){ // Check IP-Address. If valid, then work.
+					
+				}
+				else{
+					this.log.error(`Your IP-Address '${this.config.victronIp}' is not valid. Restart the Adapter.`);
+
+					this.getAdapterObjects(data => {
+						this.log.warn(data.toString());
+					});
+				}
+			}
+			else{
+				interval = setInterval(() => {
+					this.log.debug("The IP address is not set. Adapter is not running!");
+				}, 5000);
+			}
+		}
+		else{
+			this.log.warn("New program is disabled for tests...");
 		}
 	}
 
