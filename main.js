@@ -168,7 +168,7 @@ class Ve extends utils.Adapter {
 				this.log.debug(`sDeviceName: '${sDeviceName}'`);
 				this.log.debug(`nDeviceId: '${nDeviceId}'`);
 				this.log.debug(`sIpAddress: '${sIpAddress}'`);
-				
+
 				if(!bEnabled){
 					this.log.warn(`MPPT '${sDeviceName}' is disabled.`);
 					return;
