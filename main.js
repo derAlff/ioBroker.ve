@@ -15,7 +15,7 @@ const registers = require("./register/ve.register.victronenergy");
 const ve = registers.getRegisters();
 
 let interval;
-const DISABLE = true;
+const DISABLE = false;
 
 /* #001 To show actual battery state in datapoint. Not yet implemented.
 const batteryState_System = {
